@@ -3,11 +3,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.*;
 
-@WebServlet(name = "ShowServlet",urlPatterns = { "/ShowServlet" })
-public class Servlet extends HttpServlet {
+@WebServlet(name = "Show",urlPatterns = { "/ShowServlet" })
+public class Servlet extends HttpServlet {/*
     private String login;
     private String password;
 
@@ -15,7 +16,25 @@ public class Servlet extends HttpServlet {
     private static Statement stmt;
     private static ResultSet rs;
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request,
+                          HttpServletResponse response) throws ServletException, IOException {
+
+        String userName = request.getParameter("userName");
+        String password = request.getParameter("password1");
+        String id = request.getParameter("id");
+
+        HttpSession session = request.getSession(true);
+        try {
+            UserDAO userDAO = new UserDAO();
+            userDAO.addUserDetails(userName, password, id);
+            response.sendRedirect("Success");
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+
+    }
+    /*protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String command = request.getParameter("command");
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
@@ -77,11 +96,11 @@ public class Servlet extends HttpServlet {
         catch (SQLException sqlEx) {
             sqlEx.printStackTrace();
         } finally {
-        try { con.close(); } catch(SQLException se) { /*can't do anything */ }
-        try { stmt.close(); } catch(SQLException se) { /*can't do anything */ }
-        try { rs.close(); } catch(SQLException se) { /*can't do anything */ }
+        try { con.close(); } catch(SQLException se) { /*can't do anything  }
+        try { stmt.close(); } catch(SQLException se) { /*can't do anything  }
+        try { rs.close(); } catch(SQLException se) { /*can't do anything  }
          }
 
 
-    }
+    }*/
 }
