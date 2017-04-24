@@ -21,8 +21,34 @@
         <div class="panel-heading">
             <h3 class="panel-title">
                 <div align="left"><b>Users List</b> </div>
-                <div align="right"><a href="createEmployee">Add New User</a></div>
+                <div align="right"><a href="createUser">Add New User</a></div>
             </h3>
+        </div>
+        <div class="panel-body">
+            <c:if test="${empty userList}">
+                There are no Users
+            </c:if>
+            <c:if test="${not empty userList}">
+
+                <table class="table table-hover table-bordered">
+                    <thead style="background-color: #bce8f1;">
+                    <tr>
+                        <th>Id</th>
+                        <th>Login</th>
+                        <th>Password</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${userList}" var="emp">
+                        <tr>
+                            <th><c:out value="${emp.id_role}"/></th>
+                            <th><c:out value="${emp.login}"/></th>
+                            <th><c:out value="${emp.password}"/></th>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </c:if>
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>

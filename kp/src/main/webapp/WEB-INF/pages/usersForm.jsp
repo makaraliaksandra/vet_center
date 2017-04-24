@@ -32,22 +32,21 @@
             <form:form id="userRegisterForm" cssClass="form-horizontal" modelAttribute="user" method="post" action="saveUser">
 
                 <div class="form-group">
-                    <div class="control-label col-xs-3"> <form:label path="name" >Name</form:label> </div>
+                    <form:label path="login" cssClass="control-label col-xs-3">Login</form:label>
                     <div class="col-xs-6">
-                        <form:hidden path="id" value="${userObject.id_role}"/>
                         <form:input cssClass="form-control" path="login" value="${userObject.login}"/>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <form:label path="age" cssClass="control-label col-xs-3">Age</form:label>
+                    <form:label path="password" cssClass="control-label col-xs-3">Password</form:label>
                     <div class="col-xs-6">
                         <form:input cssClass="form-control" path="password" value="${userObject.password}"/>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="control-label col-xs-3"><form:label path="salary">Salary</form:label></div>
+                    <form:label path="id_role" cssClass="control-label col-xs-3">Password</form:label>
                     <div class="col-xs-6">
                         <form:input cssClass="form-control" path="id_role" value="${userObject.id_role}"/>
                     </div>
@@ -58,7 +57,7 @@
                         <div class="col-xs-4">
                         </div>
                         <div class="col-xs-4">
-                            <input type="submit" id="saveEmployee" class="btn btn-primary" value="Save" onclick="return submitEmployeeForm();"/>
+                            <input type="submit" id="saveUser" class="btn btn-primary" value="Save" onclick="return submitUserForm();"/>
                         </div>
                         <div class="col-xs-4">
                         </div>
@@ -74,7 +73,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
-    function submitEmployeeForm() {
+    function submitUserForm() {
 
         // getting the employee form values
         var login = $('#login').val().trim();

@@ -1,9 +1,8 @@
 package work.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -13,6 +12,9 @@ public class User implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @Column
     private String login;
 
     @Column
@@ -28,7 +30,13 @@ public class User implements Serializable {
 
     public User() {
     }
+    public Integer getId_role() {
+        return id_role;
+    }
 
+    public void setId_role(Integer id_role) {
+        this.id_role = id_role;
+    }
     public String getPassword() {
         return password;
     }
@@ -43,14 +51,6 @@ public class User implements Serializable {
 
     public void setLogin(String firstName) {
         this.login = firstName;
-    }
-
-    public Integer getIdRole() {
-        return id_role;
-    }
-
-    public void setIdRole(Integer Id) {
-        this.id_role = Id;
     }
 
     @Override

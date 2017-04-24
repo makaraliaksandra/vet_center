@@ -20,13 +20,18 @@ public class UserDAOImpl implements UserDAO {
     private HibernateUtil hibernateUtil;
 
     @Override
-    public long createUser(User user) {
-        return (Long) hibernateUtil.create(user);
+    public String createUser(User user) {
+        return (String) hibernateUtil.create(user);
     }
 
     @Override
     public User getUser(String login) {
         return hibernateUtil.fetchById(login, User.class);
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return hibernateUtil.fetchAll(User.class);
     }
 
     @SuppressWarnings("unchecked")
@@ -40,7 +45,7 @@ public class UserDAOImpl implements UserDAO {
             String name = (String) employeeObject[1];
             String pass = (String) employeeObject[2];
             int id = (int) employeeObject[3];
-            employee.setIdRole(id);
+            employee.setId_role(id);
             employee.setLogin(name);
             employee.setPassword(pass);
             employees.add(employee);
