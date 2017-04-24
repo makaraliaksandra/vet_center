@@ -11,6 +11,6 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>mvc-dispatcher</servlet-name>
-        <url-pattern>/kp</url-pattern>
+        <url-pattern>/kp-1</url-pattern>
     </servlet-mapping>
 </web-app>
