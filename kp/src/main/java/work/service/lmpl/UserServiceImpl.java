@@ -14,20 +14,25 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     public UserServiceImpl() {
-        System.out.println("EmployeeServiceImpl()");
+        System.out.println("UserServiceImpl()");
     }
 
     @Autowired
     private UserDAO userDAO;
 
     @Override
-    public long createUser(User user) {
+    public String createUser(User user) {
         return userDAO.createUser(user);
     }
 
     @Override
     public User getUser(String user) {
         return userDAO.getUser(user);
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return userDAO.getAllUsers();
     }
 
     @Override
