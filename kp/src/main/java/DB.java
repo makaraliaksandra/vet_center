@@ -1,7 +1,7 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-public class DB {
+public class DB {//for commit
     String url = "jdbc:mysql://localhost:3306/vet";
     String login ="root";
     String password ="root";
