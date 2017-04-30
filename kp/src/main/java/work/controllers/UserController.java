@@ -28,6 +28,14 @@ public class UserController {
         return new ModelAndView("usersForm");
     }
 
+    @RequestMapping("/welcome")
+    public ModelAndView welcomePage(@ModelAttribute User user) {
+        //logger.info("Saving the User. Data : "+user);
+        //userService.createUser(user);
+
+        return new ModelAndView("/WEB-INF/index.jsp");
+    }
+
     @RequestMapping("saveUser")
     public ModelAndView saveUser(@ModelAttribute User user) {
         logger.info("Saving the User. Data : "+user);
