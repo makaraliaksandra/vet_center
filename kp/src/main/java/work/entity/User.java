@@ -12,8 +12,6 @@ public class User implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
     @Column
     private String login;
 
@@ -51,14 +49,5 @@ public class User implements Serializable {
 
     public void setLogin(String firstName) {
         this.login = firstName;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "login=" + login +
-                ", password='" + password + '\'' +
-                ", idRole=" + id_role +
-                '}';
     }
 }

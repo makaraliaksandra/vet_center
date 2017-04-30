@@ -19,7 +19,7 @@
         <input type="text" class="password-control" id="password" name="password" placeholder="Password" />
         <br><br>
         <input type="submit" value="Авторизация" class="button"/>
-        <input type="submit" value="Регистрация" class="button"/>
+        <button class="button"><a href="registration">Регистрация</a></button>
         <input type="submit" value="Очистить форму" class="button"/>
         <input hidden type="text" name="command" value="Add" />
     </fieldset>
