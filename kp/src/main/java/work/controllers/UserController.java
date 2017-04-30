@@ -28,6 +28,12 @@ public class UserController {
         return new ModelAndView("usersForm");
     }
 
+    @RequestMapping("table")
+    public ModelAndView table(@ModelAttribute User user) {
+        logger.info("Table opened");
+        return new ModelAndView("table");
+    }
+
     @RequestMapping("saveUser")
     public ModelAndView saveUser(@ModelAttribute User user) {
         logger.info("Saving the User. Data : "+user);
