@@ -114,6 +114,7 @@
     </dependencies>
 
     <build>
+        <finalName>kp</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>

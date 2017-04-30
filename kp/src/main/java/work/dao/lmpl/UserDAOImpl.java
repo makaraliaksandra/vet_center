@@ -36,22 +36,22 @@ public class UserDAOImpl implements UserDAO {
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<User> getAllUsers(String employeeName) {
-        String query = "SELECT e.* FROM User e WHERE e.login like '%"+ employeeName +"%'";
-        List<Object[]> employeeObjects = hibernateUtil.fetchAll(query);
-        List<User> employees = new ArrayList<User>();
-        for(Object[] employeeObject: employeeObjects) {
+    public List<User> getAllUsers(String userName) {
+        String query = "SELECT e.* FROM User e WHERE e.login like '%"+ userName +"%'";
+        List<Object[]> userObjects = hibernateUtil.<Object[]>fetchAll(query);
+        List<User> users = new ArrayList<User>();
+        for(Object[] userObject: userObjects) {
             User employee = new User();
-            String name = (String) employeeObject[1];
-            String pass = (String) employeeObject[2];
-            int id = (int) employeeObject[3];
+            String name = (String) userObject[1];
+            String pass = (String) userObject[2];
+            int id = (int) userObject[3];
             employee.setId_role(id);
             employee.setLogin(name);
             employee.setPassword(pass);
-            employees.add(employee);
+            users.add(employee);
         }
-        System.out.println(employees);
-        return employees;
+        System.out.println(users);
+        return users;
     }
 /*
     @SuppressWarnings("unchecked")
