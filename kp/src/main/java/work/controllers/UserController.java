@@ -29,9 +29,27 @@ public class UserController {
     }
 
     @RequestMapping("table")
-    public ModelAndView table(@ModelAttribute User user) {
+    public ModelAndView table() {
         logger.info("Table opened");
         return new ModelAndView("table");
+    }
+
+    @RequestMapping("autorization")
+    public ModelAndView autorization() {
+        logger.info("autorization page");
+        return new ModelAndView("autorization");
+    }
+
+    @RequestMapping("service")
+    public ModelAndView service() {
+        logger.info("service page");
+        return new ModelAndView("service");
+    }
+
+    @RequestMapping("registration")
+    public ModelAndView registration() {
+        logger.info("registration");
+        return new ModelAndView("registration");
     }
 
     @RequestMapping("saveUser")

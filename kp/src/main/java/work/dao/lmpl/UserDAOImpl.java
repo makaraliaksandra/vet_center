@@ -12,9 +12,7 @@ import java.util.List;
 @Repository
 public class UserDAOImpl implements UserDAO {
 
-    public UserDAOImpl() {
-        System.out.println("EmployeeDAOImpl");
-    }
+    public UserDAOImpl() {}
 
     @Autowired
     private HibernateUtil hibernateUtil;
@@ -53,26 +51,4 @@ public class UserDAOImpl implements UserDAO {
         System.out.println(users);
         return users;
     }
-/*
-    @SuppressWarnings("unchecked")
-    @Override
-    public List<User> getAllEmployees(String employeeName) {
-        String query = "SELECT e.* FROM Employees e WHERE e.name like '%"+ employeeName +"%'";
-        List<Object[]> employeeObjects = hibernateUtil.fetchAll(query);
-        List<Employee> employees = new ArrayList<Employee>();
-        for(Object[] employeeObject: employeeObjects) {
-            Employee employee = new Employee();
-            long id = ((BigInteger) employeeObject[0]).longValue();
-            int age = (int) employeeObject[1];
-            String name = (String) employeeObject[2];
-            float salary = (float) employeeObject[3];
-            employee.setId(id);
-            employee.setName(name);
-            employee.setAge(age);
-            employee.setSalary(salary);
-            employees.add(employee);
-        }
-        System.out.println(employees);
-        return employees;
-    }*/
 }
