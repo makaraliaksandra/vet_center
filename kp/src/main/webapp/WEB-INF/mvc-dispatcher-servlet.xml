@@ -16,8 +16,10 @@
 
     <mvc:annotation-driven />
 
-    <!-- S<mvc:resources mapping="/resources/**" location="/images/" />pecifying the Resource location to load JS, CSS, Images etc<mvc:resources mapping="/resources/**" location="/resources/" /> -->
-
+    <!-- Specifying the Resource location to load JS, CSS, Images etc <mvc:resources mapping="/resources/**" location="/resources/data/" />-->
+    <mvc:resources mapping="/css/**" location="/css/" />
+    <mvc:resources mapping="/js/**" location="/js/" />
+    <mvc:resources mapping="/img/**" location="/img/" />
 
     <!-- View Resolver -->
     <bean

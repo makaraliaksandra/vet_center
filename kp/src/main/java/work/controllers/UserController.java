@@ -28,14 +28,6 @@ public class UserController {
         return new ModelAndView("usersForm");
     }
 
-    @RequestMapping("/welcome")
-    public ModelAndView welcomePage(@ModelAttribute User user) {
-        //logger.info("Saving the User. Data : "+user);
-        //userService.createUser(user);
-
-        return new ModelAndView("/WEB-INF/index.jsp");
-    }
-
     @RequestMapping("saveUser")
     public ModelAndView saveUser(@ModelAttribute User user) {
         logger.info("Saving the User. Data : "+user);
@@ -44,7 +36,13 @@ public class UserController {
         return new ModelAndView("redirect:getAllUsers");
     }
 
-    @RequestMapping(value = {"getAllUsers", "/"})
+    @RequestMapping("/")
+    public ModelAndView welcome() {
+        logger.info("Welcome Page.");
+        return new ModelAndView("index");
+    }
+
+    @RequestMapping("getAllUsers")
     public ModelAndView getAllUsers() {
         logger.info("Getting the all Users.");
         List<User> userList = userService.getAllUsers();
