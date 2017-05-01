@@ -1,6 +1,8 @@
 package work.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import work.entity.User;
 import org.jboss.logging.Logger;
@@ -13,6 +15,7 @@ import work.entity.VetService;
 import work.service.UserInfoService;
 import work.service.UserService;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -85,13 +88,24 @@ public class UserController {
         return new ModelAndView("ownPage", "services", services);
     }
 
-    /*@RequestMapping("searchUser")
-    public boolean searchEmployee(@RequestParam("searchName") String searchName) {
-        logger.info("Login check: "+searchName);
-        List<User> userList = userService.getAllUsers(searchName);
-        if (userList.isEmpty()) return false;
-        else return true;
-    }*/
+    @RequestMapping("ownPage")
+    public ModelAndView ownPage() {
+        logger.info("ownPage");
+        return new ModelAndView("ownPage");
+    }
+
+    @RequestMapping(value = "/403", method = RequestMethod.GET)
+    public String accessDenied(Model model, Principal principal) {
+
+        if (principal != null) {
+            model.addAttribute("message", "Hi " + principal.getName()
+                    + "<br> You do not have permission to access this page!");
+        } else {
+            model.addAttribute("msg",
+                    "You do not have permission to access this page!");
+        }
+        return "403";
+    }
 
     @RequestMapping("/")
     public ModelAndView welcome() {
@@ -99,6 +113,11 @@ public class UserController {
         return new ModelAndView("index");
     }
 
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String loginPage(Model model ) {
+
+        return "autorization";
+    }
 
     @RequestMapping("getAllUsers")
     public ModelAndView getAllUsers() {

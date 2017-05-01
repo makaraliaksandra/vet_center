@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -10,7 +11,10 @@
 </head>
 <body>
 <div class="two"><h1>VetProfi</h1></div>
-<form class="auth">
+
+
+
+<form class="auth" action="${pageContext.request.contextPath}/j_spring_security_check" method='POST'>
     <fieldset>
         <p>Логин:</p>
         <input type="text" class="login-control" id="login" name="login" placeholder="Login" />
@@ -18,9 +22,14 @@
         <p>Пароль:</p>
         <input type="text" class="password-control" id="password" name="password" placeholder="Password" />
         <br><br>
+        <c:if test="${param.error == 'true'}">
+            <div style="color:red;margin:10px 0px;">
+                <b>Ошибка авторизации</b><br />
+            </div>
+        </c:if>
         <input type="submit" value="Авторизация" class="button"/>
         <a href="registration" class="button" >Регистрация</a>
-        <input type="submit" value="Очистить форму" class="button"/>
+        <input type="reset" value="Очистить форму" class="button"/>
         <input hidden type="text" name="command" value="Add" />
     </fieldset>
 </form>
