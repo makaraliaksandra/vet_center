@@ -14,47 +14,38 @@
     <fieldset>
         <legend>Форма заказа услуги</legend>
         <div class="main">
-        <div class="field">
-            <label for="surname">Фамилия: </label>
-        <input type="text" name="surname" id="surname" placeholder="Surname" />
+            <div class="field">
+                <label for="surname">Фамилия: </label>
+                <input type="text" name="surname" id="surname" placeholder="Surname" />
+            </div>
+            <div class="field">
+                <label for="init">Инициалы:</label>
+                <input type="text" name="init" id="init" placeholder="Initials" />
+            </div>
+            <div class="field">
+                <label for="service">Услуга:</label>
+                <select name="service" id="service">
+                    <option>Service</option>
+                    <option value="Услуга1">Услуга1</option>
+                    <option value="Услуга2">Услуга2</option>
+                    <option value="Услуга3">Услуга3</option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="date">Дата:</label>
+                <input type="date" id="date" name="date" placeholder="mm/dd/yyyy"/>
+            </div>
+            <div class="field">
+                <label for="time">Время:</label>
+                <input type="time" id="time" name="time" placeholder="hh:mm"/>
+            </div>
+            <br>
+            <div align="center">
+                <input type="submit" value="Отправить" class="button"/>
+                <input type="submit" value="Очистить форму" class="button"/>
+                <input hidden type="text" name="command" value="Add" />
+            </div>
         </div>
-        <div class="field">
-            <label for="init">Инициалы:</label>
-        <input type="text" name="init" id="init" placeholder="Initials" />
-        </div>
-        <div class="field">
-            <label for="service">Услуга:</label>
-        <select name="service" id="service">
-            <option>Service</option>
-            <option value="Услуга1">Услуга1</option>
-            <option value="Услуга2">Услуга2</option>
-            <option value="Услуга3">Услуга3</option>
-        </select>
-        </div>
-        <div class="field">
-            <label for="doctor">Врач:</label>
-        <select name="doctor" id="doctor">
-            <option>Doctor</option>
-            <option value="Иванов">Иванов</option>
-            <option value="Петров">Петров</option>
-            <option value="Сидоров">Сидоров</option>
-        </select>
-        </div>
-        <div class="field">
-            <label for="date">Дата:</label>
-        <input type="date" id="date" name="date" placeholder="mm/dd/yyyy"/>
-        </div>
-        <div class="field">
-            <label for="time">Время:</label>
-            <input type="time" id="time" name="time" placeholder="hh:mm"/>
-        </div>
-        <br>
-        <div class="serv-but">
-        <input type="submit" value="Отправить" class="button"/>
-        <input type="submit" value="Очистить форму" class="button"/>
-        <input hidden type="text" name="command" value="Add" />
-   </div>
-    </div>
     </fieldset>
 </form>
 

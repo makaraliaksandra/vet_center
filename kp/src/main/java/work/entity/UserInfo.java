@@ -24,7 +24,7 @@ public class UserInfo implements Serializable {
     private String name;
 
     @Column(name = "number_passport")
-    private String numberPassport;
+    private String number_passport;
 
     @Column(name = "surname")
     private String surname;
@@ -57,11 +57,11 @@ public class UserInfo implements Serializable {
     }
 
     public String getNumberPassport() {
-        return numberPassport;
+        return number_passport;
     }
 
-    public void setNumberPassport(String numberPassport) {
-        this.numberPassport = numberPassport;
+    public void setNumberPassport(String number_passport) {
+        this.number_passport = number_passport;
     }
 
     public String getTelephone() {

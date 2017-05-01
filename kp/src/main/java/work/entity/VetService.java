@@ -21,7 +21,7 @@ public class VetService implements Serializable {
     private Date date;
 
     @Column(name = "id_doctor")
-    private Integer idDoctor;
+    private Integer id_doctor;
 
     @Column
     private String login;
@@ -30,18 +30,7 @@ public class VetService implements Serializable {
     private String name;
 
     @Column
-    private String number_passport;
-
-    @Column
     private String time;
-
-    public String getNumber_passport() {
-        return number_passport;
-    }
-
-    public void setNumber_passport(String number_passport) {
-        this.number_passport = number_passport;
-    }
 
     public int getIdService() {
         return id_service;
@@ -92,10 +81,10 @@ public class VetService implements Serializable {
     }
 
     public Integer getIdDoctor() {
-        return idDoctor;
+        return id_doctor;
     }
 
-    public void setIdDoctor(Integer idDoctor) {
-        this.idDoctor = idDoctor;
+    public void setIdDoctor(Integer id_doctor) {
+        this.id_doctor = id_doctor;
     }
 }
