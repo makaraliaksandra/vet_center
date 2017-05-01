@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import work.entity.Ad;
 import work.entity.User;
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import work.entity.UserInfo;
 import work.entity.VetService;
+import work.service.AdService;
 import work.service.UserInfoService;
 import work.service.UserService;
 
@@ -29,7 +31,12 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    work.service.VetService vetService;
+    @Autowired
+    private work.service.VetService vetService;
+
+    @Autowired
+    private AdService adService;
+
     @Autowired
     private UserInfoService userInfoService;
 
@@ -81,7 +88,10 @@ public class UserController {
     @RequestMapping("tableAd")
     public ModelAndView tableAd() {
         logger.info("tableAd");
-        return new ModelAndView("tableAd");
+        //return new ModelAndView("tableAd");
+
+        List<Ad> adList = adService.getAllAds();
+        return new ModelAndView("tableAd", "adList", adList);
     }
 
     @RequestMapping("tableQuestion")
