@@ -11,8 +11,10 @@
 <body>
 <a href="ad" class="button" >Разместить объявление</a>
 <br><br>
+<c:if test="${adList.size()==3}">
 <div class="container">
     <div class="row">
+
         <div class="column1">
             <p>
             <c:out value="${adList.get(0).textAd}"/></p>
@@ -23,8 +25,10 @@
         <div class="column3">
             <p><c:out value="${adList.get(2).textAd}"/></p>
         </div>
+            <>
     </div>
 </div>
+</c:if>
 <br>
 <a href="index">Вернуться назад<span class="arrow">&rarr;</span></a>
 </body>

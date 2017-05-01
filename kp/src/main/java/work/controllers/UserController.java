@@ -4,16 +4,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import work.entity.Ad;
-import work.entity.User;
+import work.entity.*;
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import work.entity.UserInfo;
-import work.entity.VetService;
 import work.service.AdService;
+import work.service.QuestionService;
 import work.service.UserInfoService;
 import work.service.UserService;
 
@@ -36,6 +34,9 @@ public class UserController {
 
     @Autowired
     private AdService adService;
+
+    @Autowired
+    private QuestionService questionService;
 
     @Autowired
     private UserInfoService userInfoService;
@@ -97,7 +98,11 @@ public class UserController {
     @RequestMapping("tableQuestion")
     public ModelAndView tableQuestion() {
         logger.info("tableQuestion");
-        return new ModelAndView("tableQuestion");
+        //return new ModelAndView("tableQuestion");
+
+        List<Question> questionList = questionService.getAllQuestions();
+        return new ModelAndView("tableQuestion", "questionList", questionList);
+
     }
 
     @RequestMapping("index")

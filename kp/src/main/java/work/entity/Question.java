@@ -5,39 +5,35 @@ import javax.persistence.*;
 @Entity
 @Table(name = "question")
 public class Question {
-    private int idQuestion;
-    private String textQuestion;
-    private Integer status;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id_question;
+
+    @Column(name = "text_question")
+    private String text_question;
+
+    @Column(name = "login")
     private String login;
 
     @Id
     @Column(name = "id_question")
     public int getIdQuestion() {
-        return idQuestion;
+        return id_question;
     }
 
     public void setIdQuestion(int idQuestion) {
-        this.idQuestion = idQuestion;
+        this.id_question = idQuestion;
     }
 
     @Basic
     @Column(name = "text_question")
     public String getTextQuestion() {
-        return textQuestion;
+        return text_question;
     }
 
     public void setTextQuestion(String textQuestion) {
-        this.textQuestion = textQuestion;
-    }
-
-    @Basic
-    @Column(name = "status")
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
+        this.text_question = textQuestion;
     }
 
     @Basic
@@ -50,6 +46,8 @@ public class Question {
         this.login = login;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -57,9 +55,9 @@ public class Question {
 
         Question that = (Question) o;
 
-        if (idQuestion != that.idQuestion) return false;
-        if (textQuestion != null ? !textQuestion.equals(that.textQuestion) : that.textQuestion != null) return false;
-        if (status != null ? !status.equals(that.status) : that.status != null) return false;
+        if (id_question != that.id_question) return false;
+        if (text_question != null ? !text_question.equals(that.text_question) : that.text_question != null) return false;
+        //if (status != null ? !status.equals(that.status) : that.status != null) return false;
         if (login != null ? !login.equals(that.login) : that.login != null) return false;
 
         return true;
@@ -67,10 +65,39 @@ public class Question {
 
     @Override
     public int hashCode() {
-        int result = idQuestion;
-        result = 31 * result + (textQuestion != null ? textQuestion.hashCode() : 0);
-        result = 31 * result + (status != null ? status.hashCode() : 0);
+        int result = id_question;
+        result = 31 * result + (text_question != null ? text_question.hashCode() : 0);
+        //result = 31 * result + (status != null ? status.hashCode() : 0);
         result = 31 * result + (login != null ? login.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "answer")
+    private String answer;
+
+    @Basic
+    @Column(name = "answer")
+    public String getAnswer() {
+        return answer;
+    }
+
+    @Basic
+    @Column(name = "answer")
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    @Basic
+    @Column(name = "id_category")
+    private Integer id_category;
+    @Basic
+    @Column(name = "id_category")
+    public Integer getId_category() {
+        return id_category;
+    }
+
+    public void setId_category(Integer id_category) {
+        this.id_category = id_category;
     }
 }
