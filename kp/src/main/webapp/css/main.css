@@ -561,3 +561,13 @@ footer .address .phone{
     font-family: "raleway-bold", arial;
     font-weight: bold;
 }
+
+input {height: 1.6em;}
+input[name="q"] {padding-right: 1.8em;}
+input[type="image"] {
+    left: -1.8em;
+    position: relative;
+    vertical-align: middle;
+    width: 1.2em;
+    height: 1.2em;
+}

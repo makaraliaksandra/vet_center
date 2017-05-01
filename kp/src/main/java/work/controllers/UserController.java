@@ -29,6 +29,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    work.service.VetService vetService;
     @Autowired
     private UserInfoService userInfoService;
 
@@ -76,6 +77,33 @@ public class UserController {
         logger.info("ad");
         return new ModelAndView("ad");
     }
+
+    @RequestMapping("tableAd")
+    public ModelAndView tableAd() {
+        logger.info("tableAd");
+        return new ModelAndView("tableAd");
+    }
+
+    @RequestMapping("tableQuestion")
+    public ModelAndView tableQuestion() {
+        logger.info("tableQuestion");
+        return new ModelAndView("tableQuestion");
+    }
+
+    @RequestMapping("index")
+    public ModelAndView index() {
+        logger.info("index");
+        return new ModelAndView("index");
+    }
+
+    @RequestMapping("searchEmployee")
+    public ModelAndView searchEmployee(@RequestParam("searchName") String searchName) {
+        logger.info("Searching the Employee. Employee Names: "+searchName);
+
+        List<VetService> employeeList = vetService.getAllServices(searchName);
+        return new ModelAndView("employeeList", "employeeList", employeeList);
+    }
+
     @RequestMapping("saveUser")
     public ModelAndView saveUser(@ModelAttribute("user") User user, @ModelAttribute("userInfo") UserInfo userInfo) {
         logger.info("Saving the User. Data : "+user);

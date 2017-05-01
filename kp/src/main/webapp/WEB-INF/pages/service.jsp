@@ -11,6 +11,7 @@
 <body>
 <div class="two"><h1>VetProfi</h1></div>
 <form>
+
     <fieldset>
         <legend>Форма заказа услуги</legend>
         <div class="main">
@@ -42,21 +43,13 @@
             <br>
             <div align="center">
                 <input type="submit" value="Отправить" class="button"/>
-                <input type="submit" value="Очистить форму" class="button"/>
+                <input type="reset" value="Очистить форму" class="button"/>
                 <input hidden type="text" name="command" value="Add" />
             </div>
         </div>
     </fieldset>
 </form>
-
 <br>
-<table>
-    <tr>
-        <td><input type="text" value="${login}" /></td>
-        <td><input type="text" value="${password}" /></td>
-    </tr>
-</table>
-
-<br>
+<a href="index">Вернуться назад<span class="arrow">&rarr;</span></a>
 </body>
 </html>
