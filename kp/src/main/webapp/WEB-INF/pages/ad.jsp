@@ -43,5 +43,6 @@
 </form>
 
 <br>
+<a href="index">Вернуться назад<span class="arrow">&rarr;</span></a>
 </body>
 </html>

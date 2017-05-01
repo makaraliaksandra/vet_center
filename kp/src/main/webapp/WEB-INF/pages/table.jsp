@@ -9,6 +9,13 @@
 
 </head>
 <body>
+<form action="searchEmployee">
+  <div class="d7">
+    <input type="text" placeholder="Искать здесь...">
+    <button type="submit"></button>
+  </div>
+</form>
+<br>
 <div class="wrap">
   <div class="table">
     <ul>
@@ -24,6 +31,8 @@
           <p><span>10</span> projects</p>
           <p><span>10GB</span> amount of space</p>
           <p><span>5</span> e-mail accounts</p>
+          <br>
+          <img src="../../img/osmotr.jpg" width="165" height="115" alt="Client 1" />
         </div>
       </li>
 
@@ -38,6 +47,8 @@
           <p><span>50</span> projects</p>
           <p><span>50GB</span> amount of space</p>
           <p><span>10</span> e-mail accounts</p>
+          <br>
+          <img src="../../img/priv.jpg" width="165" height="115" alt="Client 1" />
         </div>
       </li>
 
@@ -52,6 +63,8 @@
           <p><span>Unlimited</span> projects</p>
           <p><span>1TB</span> amount of space</p>
           <p><span>100</span> e-mail accounts</p>
+          <br>
+          <img src="../../img/groom.jpg" width="165" height="115" alt="Client 1" />
         </div>
       </li>
 
@@ -66,12 +79,14 @@
           <p><span>Unlimited</span> projects</p>
           <p><span>Unlimited</span> amount of space</p>
           <p><span>Unlimited</span> e-mail accounts</p>
+          <br>
+          <img src="../../img/massag.jpg" width="165" height="115" alt="Client 1" />
         </div>
       </li>
     </ul>
   </div>
 </div>
-
+<br><br>
 <div id="wrapper">
   <h1>Услуги ветеринарного центра</h1>
 
@@ -104,6 +119,7 @@
   </table>
 </div>
 
-
+<br>
+<a href="index">Вернуться назад<span class="arrow">&rarr;</span></a>
 </body>
 </html>

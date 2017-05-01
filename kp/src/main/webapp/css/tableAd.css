@@ -1,0 +1,60 @@
+body{
+    font-size:1em;
+    line-height: 1.25;
+    padding:1.25em;
+    font-family: Georgia, Times, "Times New Roman", serif;
+    color:#555;
+}
+
+.container{
+    background: rgb(230, 210, 174);
+    width: 100%;
+    max-width: 60em;
+    margin: 0 auto;
+
+    -webkit-border-radius: .25em;
+    -moz-border-radius: .25em;
+    border-radius: .25em;
+
+    -moz-box-shadow: inset .125em .125em .5em rgba(68,68,68,0.2);
+    -webkit-box-shadow: inset .125em .125em .5em rgba(68,68,68,0.2);
+    box-shadow: inset .125em .125em .5em rgba(68,68,68,0.2);
+}
+
+.row{
+    display:table;
+    margin: 0 0;
+    padding:.5em 0;
+    border-collapse:separate;
+    border-spacing: 1.25em .625em; /*use border-spacing instead of margins*/
+}
+
+.column1, .column2, .column3{
+    display:block;
+    padding: 1.5em 1.25em;
+    margin-bottom:.5em;
+    background: rgb(252, 250, 247);
+
+    -webkit-border-radius: .25em;
+    -moz-border-radius: .25em;
+    border-radius: .25em;
+
+    -moz-box-shadow: .25em .25em .25em rgba(68,68,68,0.2),inset 0 0 .125em rgba(68,68,68,0.2);
+    -webkit-box-shadow: .25em .25em .25em rgba(68,68,68,0.2),inset 0 0 .125em rgba(68,68,68,0.2);
+    box-shadow: .25em .25em .25em rgba(68,68,68,0.2),inset 0 0 .125em rgba(68,68,68,0.2);
+}
+
+p{
+    margin-top:0;
+    font-size: .875em;
+    line-height: 1.45;
+}
+
+
+@media only screen and (min-width : 32em) {
+
+    .column1, .column2, .column3 {
+        width: 32%;
+        display: table-cell;
+    }
+}
