@@ -35,14 +35,6 @@
 </form>
 
 <br>
-<table>
-    <tr>
-        <td><input type="text" value="${login}" /></td>
-        <td><input type="text" value="${password}" /></td>
-    </tr>
-</table>
-
-<br>
 <a href="index">Вернуться назад<span class="arrow">&rarr;</span></a>
 
 </body>

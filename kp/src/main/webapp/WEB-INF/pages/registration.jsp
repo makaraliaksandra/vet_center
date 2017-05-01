@@ -49,7 +49,7 @@
         <br>
         <div align="center">
             <input type="submit" value="Отправить" class="button" value="saveInfo" onclick="return submitUserForm();"/>
-            <input type="submit" value="Очистить форму" class="button"/>
+            <input type="reset" value="Очистить форму" class="button"/>
             <input hidden type="text" name="command" value="Add" />
         </div>
 
