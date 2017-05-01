@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -14,26 +15,23 @@
 
 
     <table cellspacing="0">
+        <thead>
         <tr>
             <th scope="col" class="name">Вопрос</th>
             <th scope="col">Ответ</th>
-            <th scope="col">Врач-ветиринар</th>
+            <th scope="col">Вопрос задан</th>
         </tr>
-        <tr class="alt">
-            <td class="name" width="40%">Вопрос вопросик вопросище</td>
-            <td width="35%">Ответик-ветик</td>
-            <td>Котоспециалист</td>
-        </tr>
-        <tr>
-            <td class="name"><a href="/forum/">Name of Forum</a> This is the description of the forum.  This is another line of descriptive text.</td>
-            <td>9313/163773. Lorem Ipsum är en utfyllnadstext från tryck- och förlagsindustrin. Lorem ipsum har varit standard ända sedan 1500-talet,</td>
-            <td>Feb 28, 2005 04:21 PM</td>
-        </tr>
-        <tr class="alt">
-            <td class="name"> This is the description of the forum.  This is another line of descriptive text.</td>
-            <td>9313/163773</td>
-            <td>Feb 28, 2005 04:21 PM</td>
-        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${questionList}" var="q">
+            <tr>
+                <th><c:out value="${q.textQuestion}"/></th>
+                <th><c:out value="${q.answer}"/></th>
+                <th><c:out value="${q.login}"/></th>
+            </tr>
+        </c:forEach>
+        </tbody>
+
     </table>
 
 </div>
