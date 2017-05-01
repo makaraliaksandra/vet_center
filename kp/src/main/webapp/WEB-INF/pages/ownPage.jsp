@@ -33,12 +33,11 @@
                 <table class="table table-hover table-bordered">
                     <thead style="background-color: #bce8f1;">
                     <tr>
-                        <th>Id</th>
                         <th>Название</th>
                         <th>Стоимость</th>
                         <th>Дата</th>
                         <th>Время</th>
-                        <th>Доктор</th>
+                        <th>Статус</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -48,7 +47,12 @@
                             <th><c:out value="${s.cost}"/></th>
                             <th><c:out value="${s.date}"/></th>
                             <th><c:out value="${s.time}"/></th>
-                            <th><c:out value="${s.id_doctor}"/></th>
+                            <c:if test="${s.idDoctor != 0}">
+                                <th><c:out value="Подтверждено"/></th>
+                            </c:if>
+                            <c:if test="${s.idDoctor == 0}">
+                                <th><c:out value="В обработке"/></th>
+                            </c:if>
                         </tr>
                     </c:forEach>
                     </tbody>
