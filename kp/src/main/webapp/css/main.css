@@ -143,7 +143,13 @@ header nav ul .selected{
     width: 100%;
     height: auto;
 }
+.caption {
+    text-shadow: -1px -1px 0 #000,
+                1px -1px 0 #000,
+                -1px 1px 0 #000,
+                1px 1px 0 #000;
 
+}
 #slides .slide .caption{  
     width: 100%;
     position: absolute;
