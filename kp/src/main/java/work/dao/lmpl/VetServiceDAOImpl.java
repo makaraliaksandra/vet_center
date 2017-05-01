@@ -40,14 +40,16 @@ public class VetServiceDAOImpl implements VetServiceDAO {
         List<work.entity.VetService> users = new ArrayList<work.entity.VetService>();
         for(Object[] userObject: userObjects) {
             work.entity.VetService user = new work.entity.VetService();
-            int id = (int) userObject[1];
-            double cost = (double) userObject[2];
-            Date date = (Date) userObject[3];
-            int id_doctor = (int) userObject[4];
-            String login = (String) userObject[5];
-            String name = (String) userObject[6];
-            String time = (String) userObject[7];
-            user.setIdService(id);
+            System.out.print(userObject[1]+" "+userObject[2]+" "+userObject[3]+" " +
+                    userObject[4] + " " + userObject[5]+" " + userObject[6]+" ");
+            //int id = (int) userObject[1];
+            double cost = (double) userObject[1];
+            Date date = (Date) userObject[2];
+            int id_doctor = (int) userObject[3];
+            String login = (String) userObject[4];
+            String name = (String) userObject[5];
+            String time = (String) userObject[6];
+            // user.setIdService(id);
             user.setCost(cost);
             user.setDate(date);
             user.setIdDoctor(id_doctor);

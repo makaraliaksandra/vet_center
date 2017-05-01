@@ -12,6 +12,7 @@ form{
     padding-bottom: 2%;
     border-radius: 2%;
     line-height: 2;
+    margin-bottom: 20px;
 }
 .auth{
     text-align: center;
@@ -59,11 +60,16 @@ p{
     font-family: "raleway-bold", arial;
     font-size: 20px;
 }
-.field {clear:both; text-align:right; line-height:25px;
-    padding-left: 150px;}
+.field {
+    clear:both;
+    text-align:right;
+    line-height:25px;
+    padding-right:90px;
+    margin-bottom: 7px;
+}
 label {
     float:left;
-    padding-right:10px;
+    padding-left:90px;
     color: #5e5e5e;
     font-family: "raleway-bold", arial;
     font-size: 20px;

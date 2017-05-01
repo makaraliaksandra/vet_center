@@ -42,7 +42,6 @@
                     <tbody>
                     <c:forEach items="${services}" var="s">
                         <tr>
-                            <th><c:out value="${s.id_service}"/></th>
                             <th><c:out value="${s.name}"/></th>
                             <th><c:out value="${s.cost}"/></th>
                             <th><c:out value="${s.date}"/></th>
@@ -57,5 +56,6 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</div>
 </body>
 </html>

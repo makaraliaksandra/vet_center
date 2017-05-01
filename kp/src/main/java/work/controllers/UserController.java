@@ -62,6 +62,17 @@ public class UserController {
         return new ModelAndView("registration");
     }
 
+    @RequestMapping("question")
+    public ModelAndView question() {
+        logger.info("question");
+        return new ModelAndView("question");
+    }
+
+    @RequestMapping("ad")
+    public ModelAndView ad() {
+        logger.info("ad");
+        return new ModelAndView("ad");
+    }
     @RequestMapping("saveUser")
     public ModelAndView saveUser(@ModelAttribute("user") User user, @ModelAttribute("userInfo") UserInfo userInfo) {
         logger.info("Saving the User. Data : "+user);
