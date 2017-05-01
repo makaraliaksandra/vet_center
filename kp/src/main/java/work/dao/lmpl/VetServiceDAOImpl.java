@@ -45,7 +45,10 @@ public class VetServiceDAOImpl implements VetServiceDAO {
             //int id = (int) userObject[1];
             double cost = (double) userObject[1];
             Date date = (Date) userObject[2];
-            int id_doctor = (int) userObject[3];
+            int id_doctor= 0;
+            if (userObject[3]!=null) {
+                id_doctor = (int) userObject[3];
+            }
             String login = (String) userObject[4];
             String name = (String) userObject[5];
             String time = (String) userObject[6];

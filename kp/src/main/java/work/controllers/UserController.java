@@ -132,9 +132,10 @@ public class UserController {
     }
 
     @RequestMapping("ownPage")
-    public ModelAndView ownPage() {
+    public ModelAndView ownPage(Model model, Principal principal) {
         logger.info("ownPage");
-        return new ModelAndView("ownPage");
+        List<VetService> services = service.getAllServices(principal.getName());
+        return new ModelAndView("ownPage", "services", services);
     }
 
     @RequestMapping(value = "/403", method = RequestMethod.GET)

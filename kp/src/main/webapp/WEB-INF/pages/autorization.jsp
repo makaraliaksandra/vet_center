@@ -33,7 +33,6 @@
         <input hidden type="text" name="command" value="Add" />
     </fieldset>
 </form>
-
 <br>
 <a href="index">Вернуться назад<span class="arrow">&rarr;</span></a>
 
