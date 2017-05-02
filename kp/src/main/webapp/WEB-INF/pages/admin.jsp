@@ -12,23 +12,20 @@
 <body>
 <div class="two"><h1>VetProfi</h1></div>
 
-
-
-<form class="auth" action="${pageContext.request.contextPath}/j_spring_security_check" method='POST'>
+<form class="auth" action="${pageContext.request.contextPath}/j_security_check" method='POST'>
     <fieldset>
+        <h4>Авторизация администратора</h4>
         <p>Логин:</p>
         <input type="text" class="login-control" id="login" name="login" placeholder="Login" />
-        <br>
         <p>Пароль:</p>
         <input type="password" class="password-control" id="password" name="password" placeholder="Password" />
-        <br><br>
+        <br>
         <c:if test="${param.error == 'true'}">
             <div style="color:red;margin:10px 0px;">
                 <b>Ошибка авторизации</b><br />
             </div>
         </c:if>
         <input type="submit" value="Авторизация" class="button"/>
-        <a href="registration" class="button" >Регистрация</a>
         <input type="reset" value="Очистить форму" class="button"/>
         <input hidden type="text" name="command" value="Add" />
     </fieldset>
