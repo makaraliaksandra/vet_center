@@ -142,11 +142,13 @@ public class UserController {
     public String accessDenied(Model model, Principal principal) {
 
         if (principal != null) {
-            model.addAttribute("message", "Hi " + principal.getName()
-                    + "<br> You do not have permission to access this page!");
+            model.addAttribute("message", "Hi, " + principal.getName()
+                    + "!<br> Произошла ошибка доступа. <br> Вернитесь на главную страницу и авторизуйтесь  " +
+                     "<br>через вкладку \"Личный кабинет\" :)");
         } else {
             model.addAttribute("msg",
-                    "You do not have permission to access this page!");
+                    "<br> Произошла ошибка доступа. <br> Вернитесь на главную страницу и авторизуйтесь  " +
+                            "<br>через вкладку \"Личный кабинет\" :)");
         }
         return "403";
     }
@@ -157,10 +159,27 @@ public class UserController {
         return new ModelAndView("index");
     }
 
+    @RequestMapping("/admin")
+    public ModelAndView adminPage() {
+        logger.info("Admin Page.");
+        return new ModelAndView("admin");
+    }
+
+    @RequestMapping("/page-not-found")
+    public ModelAndView error404() {
+        logger.info("Admin Page.");
+        return new ModelAndView("page-not-found");
+    }
+
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage(Model model ) {
-
         return "autorization";
+    }
+
+    @RequestMapping(value = "/adminPage", method = RequestMethod.GET)
+    public ModelAndView adminPage(Model model) {
+        List<VetService> services = service.getAllServices();
+        return new ModelAndView("adminInfo", "services", services);
     }
 
     @RequestMapping("getAllUsers")
