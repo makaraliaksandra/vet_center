@@ -10,12 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import work.service.AdService;
-import work.service.QuestionService;
-import work.service.UserInfoService;
-import work.service.UserService;
+import work.entity.VetService;
+import work.service.*;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -42,6 +41,9 @@ public class UserController {
     private UserInfoService userInfoService;
 
     @Autowired
+    private BDserviceManage bdservice;
+
+    @Autowired
     private work.service.VetService service;
 
     @RequestMapping("createUser")
@@ -53,7 +55,9 @@ public class UserController {
     @RequestMapping("table")
     public ModelAndView table() {
         logger.info("Table opened");
-        return new ModelAndView("table");
+
+        List<Bdservice> servList = bdservice.getAllBDServices();
+        return new ModelAndView("table", "servList", servList);
     }
 
     @RequestMapping("autorization")
@@ -89,7 +93,6 @@ public class UserController {
     @RequestMapping("tableAd")
     public ModelAndView tableAd() {
         logger.info("tableAd");
-        //return new ModelAndView("tableAd");
 
         List<Ad> adList = adService.getAllAds();
         return new ModelAndView("tableAd", "adList", adList);
@@ -98,7 +101,6 @@ public class UserController {
     @RequestMapping("tableQuestion")
     public ModelAndView tableQuestion() {
         logger.info("tableQuestion");
-        //return new ModelAndView("tableQuestion");
 
         List<Question> questionList = questionService.getAllQuestions();
         return new ModelAndView("tableQuestion", "questionList", questionList);
@@ -111,18 +113,24 @@ public class UserController {
         return new ModelAndView("index");
     }
 
-    @RequestMapping("searchEmployee")
+    @RequestMapping("searchService")
     public ModelAndView searchEmployee(@RequestParam("searchName") String searchName) {
-        logger.info("Searching the Employee. Employee Names: "+searchName);
+        logger.info("Searching the Service. Find by: "+searchName);
 
-        List<VetService> employeeList = vetService.getAllServices(searchName);
-        return new ModelAndView("employeeList", "employeeList", employeeList);
+        List<Bdservice> list = bdservice.getAllBDServices(searchName);
+        List<Bdservice> servList=new ArrayList<Bdservice>();
+
+        for (Bdservice bd:list) {
+            if (bd.getName().contains(searchName.toLowerCase())) servList.add(bd);
+        }
+        if (servList.isEmpty()) servList=list;
+        return new ModelAndView("table", "servList", servList);
     }
 
     @RequestMapping("saveUser")
     public ModelAndView saveUser(@ModelAttribute("user") User user, @ModelAttribute("userInfo") UserInfo userInfo) {
         logger.info("Saving the User. Data : "+user);
-        user.setId_role(1);
+        user.setId_role(2);
         userInfo.setLogin(user.getLogin());
         userService.createUser(user);
         userInfoService.createUserInfo(userInfo);
@@ -159,12 +167,6 @@ public class UserController {
         return new ModelAndView("index");
     }
 
-    @RequestMapping("/admin")
-    public ModelAndView adminPage() {
-        logger.info("Admin Page.");
-        return new ModelAndView("admin");
-    }
-
     @RequestMapping("/page-not-found")
     public ModelAndView error404() {
         logger.info("Admin Page.");
@@ -176,7 +178,7 @@ public class UserController {
         return "autorization";
     }
 
-    @RequestMapping(value = "/adminPage", method = RequestMethod.GET)
+    @RequestMapping(value = "/adminInfo", method = RequestMethod.GET)
     public ModelAndView adminPage(Model model) {
         List<VetService> services = service.getAllServices();
         return new ModelAndView("adminInfo", "services", services);
