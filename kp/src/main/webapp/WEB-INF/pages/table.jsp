@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -9,9 +10,9 @@
 
 </head>
 <body>
-<form action="searchEmployee">
+<form action="searchService">
   <div class="d7">
-    <input type="text" placeholder="Искать здесь...">
+    <input type="text" name="searchName" placeholder="Искать здесь...">
     <button type="submit"></button>
   </div>
 </form>
@@ -95,26 +96,19 @@
     <tr>
       <th><span>Название</span></th>
       <th colspan="2"><span>Описание</span></th>
-      <th><span>Врач</span></th>
-      <th><span>Цена</span></th>
+      <th><span>Стоимость</span></th>
       <th><span>Скидка</span></th>
     </tr>
     </thead>
     <tbody>
-    <tr>
-      <td class="lalign">silly tshirts</td>
-      <td colspan="2">6,000</td>
-      <td>110</td>
-      <td>1.8%</td>
-      <td>22.2</td>
-    </tr>
-    <tr>
-      <td class="lalign">ailly tshirts</td>
-      <td colspan="2">5,000</td>
-      <td>100</td>
-      <td>0.8%</td>
-      <td>0.2</td>
-    </tr>
+    <c:forEach items="${servList}" var="s">
+      <tr>
+        <th class="lalign"><c:out value="${s.name}"/></th>
+        <td colspan="2"><c:out value="${s.description}"/></td>
+        <th><c:out value="${s.cost}"/></th>
+        <th><c:out value="${s.sale}"/></th>
+      </tr>
+    </c:forEach>
     </tbody>
   </table>
 </div>
