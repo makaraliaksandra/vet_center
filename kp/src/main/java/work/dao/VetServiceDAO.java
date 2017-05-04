@@ -9,4 +9,6 @@ public interface VetServiceDAO {
     public VetService getService(String login);
     public List<VetService> getAllServices();
     public List<VetService> getAllServices(String userName);
+    public void deleteService(int id);
+    public VetService updateService(VetService service);
 }

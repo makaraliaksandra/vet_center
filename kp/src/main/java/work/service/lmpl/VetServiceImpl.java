@@ -19,6 +19,14 @@ public class VetServiceImpl implements VetService {
     @Autowired
     private VetServiceDAO serviceDAO;
 
+    public work.entity.VetService updateService(work.entity.VetService service) {
+        return serviceDAO.updateService(service);
+    }
+    @Override
+    public void deleteService(int id) {
+        serviceDAO.deleteService(id);
+    }
+
     @Override
     public int createService(work.entity.VetService service) {
         return serviceDAO.createService(service);

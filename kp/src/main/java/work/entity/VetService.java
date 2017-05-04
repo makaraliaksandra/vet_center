@@ -15,7 +15,7 @@ public class VetService implements Serializable {
     private int id_service;
 
     @Column
-    private Double cost;
+    private float cost;
 
     @Column
     private Date date;
@@ -64,11 +64,11 @@ public class VetService implements Serializable {
         this.time = time;
     }
 
-    public Double getCost() {
+    public float getCost() {
         return cost;
     }
 
-    public void setCost(Double cost) {
+    public void setCost(float cost) {
         this.cost = cost;
     }
 

@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface BDserviceManage {
     public String createBDService(Bdservice service);
-    public Bdservice getUser(String login);
+    public Bdservice getBDService(String name);
     public List<Bdservice> getAllBDServices();
     public List<Bdservice> getAllBDServices(String userName);
 }

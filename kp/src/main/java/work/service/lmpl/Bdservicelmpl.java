@@ -29,7 +29,7 @@ public class Bdservicelmpl implements BDserviceManage {
     }
 
     @Override
-    public Bdservice getUser(String service) {
+    public Bdservice getBDService(String service) {
         return bdserviceDAO.getBdservice(service);
     }
 

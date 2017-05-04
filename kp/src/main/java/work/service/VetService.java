@@ -8,4 +8,6 @@ public interface VetService {
     public work.entity.VetService getService(String service);
     public List<work.entity.VetService> getAllServices();
     public List<work.entity.VetService> getAllServices(String userName);
+    public work.entity.VetService updateService(work.entity.VetService employee);
+    public void deleteService(int id);
 }

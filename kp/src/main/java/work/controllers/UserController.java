@@ -2,13 +2,10 @@ package work.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import work.entity.*;
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import work.entity.VetService;
 import work.service.*;
@@ -27,9 +24,6 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-
-    @Autowired
-    private work.service.VetService vetService;
 
     @Autowired
     private AdService adService;
@@ -60,6 +54,12 @@ public class UserController {
         return new ModelAndView("table", "servList", servList);
     }
 
+    @RequestMapping("toAddService")
+    public ModelAndView add() {
+        List<Bdservice> servList = bdservice.getAllBDServices();
+        return new ModelAndView("toAddService", "servList", servList);
+    }
+
     @RequestMapping("autorization")
     public ModelAndView autorization() {
         logger.info("autorization page");
@@ -70,6 +70,44 @@ public class UserController {
     public ModelAndView service() {
         logger.info("service page");
         return new ModelAndView("service");
+    }
+
+    @RequestMapping("refuseService/{idService}")
+    public ModelAndView cancel(@PathVariable("idService") int idService, Principal principal) {
+        service.deleteService(idService);
+        List<VetService> services = service.getAllServices(principal.getName());
+        return new ModelAndView("ownPage", "services", services);
+    }
+
+    @RequestMapping("makeChoice/{name}")
+    public ModelAndView makeChoice(@PathVariable("name") String name) {
+        logger.info("service page");
+
+        Bdservice servList = bdservice.getBDService(name);
+        return new ModelAndView("submitOrder", "servList", servList);
+    }
+
+    @RequestMapping(value = {"makeChoice/index", "makeChoice/submitOrder/index", "refuseService/index"})
+    public ModelAndView redirect() {
+        return new ModelAndView("redirect:/index");
+    }
+
+    @RequestMapping("makeChoice/submitOrder/{name}")
+    public ModelAndView submitOrder(@PathVariable("name") String name, @ModelAttribute work.entity.VetService dateInput,
+                                    Principal principal) {
+        logger.info("New order");
+
+        VetService newService = new VetService();
+        newService.setDate(dateInput.getDate());
+        newService.setLogin(principal.getName());
+
+        Bdservice serv = bdservice.getBDService(name);
+        newService.setName(name);
+        newService.setCost(serv.getCost());
+
+        service.createService(newService);
+        List<VetService> services = service.getAllServices(principal.getName());
+        return new ModelAndView("ownPage", "services", services);
     }
 
     @RequestMapping("registration")
@@ -114,8 +152,22 @@ public class UserController {
     }
 
     @RequestMapping("searchService")
-    public ModelAndView searchEmployee(@RequestParam("searchName") String searchName) {
-        logger.info("Searching the Service. Find by: "+searchName);
+    public ModelAndView searchService(@RequestParam("searchName") String searchName) {
+        logger.info("Searching the Service. Search by: "+searchName);
+
+        List<Bdservice> allList = bdservice.getAllBDServices(searchName);
+        List<Bdservice> servList=new ArrayList<Bdservice>();
+
+        for (Bdservice bd:allList) {
+            if (bd.getName().contains(searchName.toLowerCase())) servList.add(bd);
+        }
+        if (servList.isEmpty()) servList=allList;
+        return new ModelAndView("table", "servList", servList);
+    }
+
+    @RequestMapping("searchServicetoAdd")
+    public ModelAndView searchToAdd(@RequestParam("searchName") String searchName) {
+        logger.info("Searching the Service to add. Search by: "+searchName);
 
         List<Bdservice> list = bdservice.getAllBDServices(searchName);
         List<Bdservice> servList=new ArrayList<Bdservice>();
@@ -124,7 +176,7 @@ public class UserController {
             if (bd.getName().contains(searchName.toLowerCase())) servList.add(bd);
         }
         if (servList.isEmpty()) servList=list;
-        return new ModelAndView("table", "servList", servList);
+        return new ModelAndView("toAddService", "servList", servList);
     }
 
     @RequestMapping("saveUser")
