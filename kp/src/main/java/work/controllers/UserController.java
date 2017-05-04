@@ -98,7 +98,6 @@ public class UserController {
     @RequestMapping("tableQuestion")
     public ModelAndView tableQuestion() {
         logger.info("tableQuestion");
-        //return new ModelAndView("tableQuestion");
 
         List<Question> questionList = questionService.getAllQuestions();
         return new ModelAndView("tableQuestion", "questionList", questionList);
@@ -122,7 +121,7 @@ public class UserController {
     @RequestMapping("saveUser")
     public ModelAndView saveUser(@ModelAttribute("user") User user, @ModelAttribute("userInfo") UserInfo userInfo) {
         logger.info("Saving the User. Data : "+user);
-        user.setId_role(1);
+        user.setId_role(2);
         userInfo.setLogin(user.getLogin());
         userService.createUser(user);
         userInfoService.createUserInfo(userInfo);
@@ -159,12 +158,6 @@ public class UserController {
         return new ModelAndView("index");
     }
 
-    @RequestMapping("/admin")
-    public ModelAndView adminPage() {
-        logger.info("Admin Page.");
-        return new ModelAndView("admin");
-    }
-
     @RequestMapping("/page-not-found")
     public ModelAndView error404() {
         logger.info("Admin Page.");
@@ -176,7 +169,7 @@ public class UserController {
         return "autorization";
     }
 
-    @RequestMapping(value = "/adminPage", method = RequestMethod.GET)
+    @RequestMapping(value = "/adminInfo", method = RequestMethod.GET)
     public ModelAndView adminPage(Model model) {
         List<VetService> services = service.getAllServices();
         return new ModelAndView("adminInfo", "services", services);

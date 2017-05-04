@@ -13,6 +13,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
     @Autowired
+    CustomSuccessHandler customSuccessHandler;
+
+    @Autowired
     work.service.DBAuthenticationService myauthenticationService;
 
     @Autowired
@@ -41,7 +44,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/ownPage").access("hasAnyRole('ROLE_2')");
 
         // For ADMIN only.
-        http.authorizeRequests().antMatchers("/adminPage").access("hasRole('ROLE_1')");
+        http.authorizeRequests().antMatchers("/adminInfo").access("hasRole('ROLE_1')");
 
         // When the user has logged in as XX.
         // But access a page that requires role YY,
@@ -53,20 +56,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // Submit URL of login page.
                 .loginProcessingUrl("/j_spring_security_check") // Submit URL
                 .loginPage("/authorization")//
-                .defaultSuccessUrl("/ownPage")//
+                .successHandler(customSuccessHandler)//
                 .failureUrl("/login?error=true")//
                 .usernameParameter("login")//
                 .passwordParameter("password");
-                // Config for Logout Page
-                //.and().logout().logoutUrl("/logout").logoutSuccessUrl("/logoutSuccessful");
 
-        http.authorizeRequests().and().formLogin()//
-                // Submit URL of login page.
-                .loginProcessingUrl("/j_security_check") // Submit URL
-                .loginPage("/admin")//
-                .defaultSuccessUrl("/adminPage")//
-                .failureUrl("/admin?error=true")//
-                .usernameParameter("login")//
-                .passwordParameter("password");
     }
 }
