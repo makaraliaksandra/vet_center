@@ -94,6 +94,31 @@ System.out.println(name);
         return new ModelAndView("submitOrder", "servList", servList);
     }
 
+    @RequestMapping("/allServices")
+    public ModelAndView allServices() {
+        List<Bdservice> servList = bdservice.getAllBDServices();
+        return new ModelAndView("allServices", "servList", servList);
+    }
+
+    @RequestMapping("makeSale/{name}")
+    public ModelAndView makeSale(@PathVariable("name") String name) {
+        logger.info("service page");
+
+        Bdservice serv = bdservice.getBDService(name);
+        serv.setSale(15);
+        bdservice.updateService(serv);
+        List<VetService> vs=service.getAllServices();
+        for(VetService s:vs) {
+            if (s.getName().equals(serv.getName())) {
+                s.setCost(s.getCost()-((s.getCost()*15)/100));
+                service.updateService(s);
+            }
+        }
+
+        List<Bdservice> servList=bdservice.getAllBDServices();
+        return new ModelAndView("allServices", "servList", servList);
+    }
+
     @RequestMapping("deleteService/{idService}")
     public ModelAndView deleteService(@PathVariable("idService") int idService) {
         logger.info("service page");
@@ -130,7 +155,7 @@ System.out.println(name);
         return new ModelAndView("adminInfo", "services", services);
     }
 
-    @RequestMapping(value = {"deleteService/index","makeChoice/index", "makeChoice/submitOrder/index", "refuseService/index"})
+    @RequestMapping(value = {"makeSale/index","deleteService/index","makeChoice/index", "makeChoice/submitOrder/index", "refuseService/index"})
     public ModelAndView redirect() {
         return new ModelAndView("redirect:/index");
     }
@@ -224,6 +249,20 @@ System.out.println(name);
         return new ModelAndView("toAddService", "servList", servList);
     }
 
+    @RequestMapping("searchServicetoAddtoBD")
+    public ModelAndView searchToAddtoBD(@RequestParam("searchName") String searchName) {
+        logger.info("Searching the Service to add. Search by: "+searchName);
+
+        List<Bdservice> list = bdservice.getAllBDServices(searchName);
+        List<Bdservice> servList=new ArrayList<Bdservice>();
+
+        for (Bdservice bd:list) {
+            if (bd.getName().contains(searchName.toLowerCase())) servList.add(bd);
+        }
+        if (servList.isEmpty()) servList=list;
+        return new ModelAndView("allServices", "servList", servList);
+    }
+
     @RequestMapping("saveUser")
     public ModelAndView saveUser(@ModelAttribute("user") User user, @ModelAttribute("userInfo") UserInfo userInfo) {
         logger.info("Saving the User. Data : "+user);
@@ -277,8 +316,7 @@ System.out.println(name);
 
     @RequestMapping(value = "/adminInfo", method = RequestMethod.GET)
     public ModelAndView adminPage(Model model) throws IOException {
-        /*PieChart_AWT pie = new PieChart_AWT();
-        pie.newPieChart();*/
+        PieChart_AWT pie = new PieChart_AWT();
         List<VetService> services = service.getAllServices();
         return new ModelAndView("adminInfo", "services", services);
     }

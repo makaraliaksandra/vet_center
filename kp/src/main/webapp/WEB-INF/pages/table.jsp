@@ -98,6 +98,7 @@
       <th colspan="2"><span>Описание</span></th>
       <th><span>Стоимость</span></th>
       <th><span>Скидка</span></th>
+      <th><span>Итоговая стоимость</span></th>
     </tr>
     </thead>
     <tbody>
@@ -107,6 +108,7 @@
         <td colspan="2"><c:out value="${s.description}"/></td>
         <th><c:out value="${s.cost}"/></th>
         <th><c:out value="${s.sale}"/></th>
+        <th><c:out value="${s.cost-(s.sale/100)*s.cost}"/></th>
       </tr>
     </c:forEach>
     </tbody>
@@ -115,5 +117,6 @@
 
 <br>
 <a href="index">Вернуться назад<span class="arrow">&rarr;</span></a>
+<br><br><br>
 </body>
 </html>
