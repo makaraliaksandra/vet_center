@@ -28,6 +28,10 @@ public class Bdservicelmpl implements BDserviceManage {
         return bdserviceDAO.createBdservice(service);
     }
 
+    public Bdservice updateService(Bdservice service) {
+        return bdserviceDAO.updateService(service);
+    }
+
     @Override
     public Bdservice getBDService(String service) {
         return bdserviceDAO.getBdservice(service);

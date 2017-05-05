@@ -22,7 +22,7 @@
         <div class="panel-heading">
             <h3 class="panel-title">
                 <div align="left"><b>Все заказы:</b> </div>
-                <div align="right"><a href="serviceManage">Услуги</a></div>
+                <div align="right"><a href="allServices">Услуги</a></div>
                 <div align="right"><a href="adManage">Объявления</a></div>
                 <div align="right"><a href="questionManage">Вопросы</a></div>
             </h3>
@@ -34,7 +34,7 @@
             <c:if test="${not empty services}">
                 <a id="toggler" href="#">Открыть</a>
                 <div id="box" style="display: none;">
-                    <img src="../../img/pic_2.jpg" alt=""/>
+                    <img src="../../img/pic_2.jpg" usemap="#chart" alt=""/>
                 </div>
 
                 <table class="table table-hover table-bordered">

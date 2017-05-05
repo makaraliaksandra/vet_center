@@ -9,4 +9,5 @@ public interface BDserviceManage {
     public Bdservice getBDService(String name);
     public List<Bdservice> getAllBDServices();
     public List<Bdservice> getAllBDServices(String userName);
+    public Bdservice updateService(Bdservice employee);
 }
