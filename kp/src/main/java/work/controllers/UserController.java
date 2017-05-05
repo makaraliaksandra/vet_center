@@ -119,6 +119,8 @@ System.out.println(name);
         return new ModelAndView("allServices", "servList", servList);
     }
 
+
+
     @RequestMapping("deleteService/{idService}")
     public ModelAndView deleteService(@PathVariable("idService") int idService) {
         logger.info("service page");
@@ -273,6 +275,15 @@ System.out.println(name);
 
         List<VetService> services = service.getAllServices(user.getLogin());
         return new ModelAndView("ownPage", "services", services);
+    }
+
+    @RequestMapping("saveBDService")
+    public ModelAndView saveBDService(@ModelAttribute("bdService") Bdservice bd) {
+        bd.setSale(0);
+        bdservice.createBDService(bd);
+
+        List<Bdservice> servList = bdservice.getAllBDServices();
+        return new ModelAndView("allServices", "servList", servList);
     }
 
     @RequestMapping("ownPage")
