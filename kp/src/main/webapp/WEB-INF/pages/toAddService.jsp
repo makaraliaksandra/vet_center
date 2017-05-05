@@ -4,6 +4,7 @@
 <html>
 <head>
     <title>Ветеринарный центр</title>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css">
     <link rel="stylesheet" type="text/css" href="../../css/table.css">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.js"></script>
@@ -11,6 +12,7 @@
 
 </head>
 <body>
+<div class="two"><h1>VetProfi</h1></div>
 <form action="searchServicetoAdd">
     <div class="d7">
         <input type="text" name="searchName" placeholder="Искать здесь...">

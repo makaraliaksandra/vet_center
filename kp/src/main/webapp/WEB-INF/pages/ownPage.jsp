@@ -15,12 +15,12 @@
         }
     </style>
 </head>
-<body class=".container-fluid">
+<body style=" background-color: #E4E5D2; align-content: center">
 <div class="container myrow-container">
     <div class="panel panel-success">
         <div class="panel-heading">
             <h3 class="panel-title">
-                <div align="left"><b>Ваши заказы:</b> </div>
+                <div align="left"><b>Ваш личный кабинет:</b> </div>
                 <div align="right"><a href="toAddService">Заказ услуги</a></div>
             </h3>
         </div>

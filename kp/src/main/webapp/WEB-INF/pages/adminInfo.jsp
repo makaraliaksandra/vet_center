@@ -16,18 +16,19 @@
         }
     </style>
 </head>
-<body class=".container-fluid">
-<div class="container myrow-container">
-    <div class="panel panel-success">
-        <div class="panel-heading">
-            <h3 class="panel-title">
-                <div align="left"><b>Все заказы:</b> </div>
+<body style=" background-color: #E4E5D2; align-content: center">
+<div >
+    <div >
+        <div >
+            <h3 >
+                <div align="left"><b>Панель администратора:</b> </div>
                 <div align="right"><a href="allServices">Услуги</a></div>
                 <div align="right"><a href="adManage">Объявления</a></div>
                 <div align="right"><a href="questionManage">Вопросы</a></div>
+
             </h3>
         </div>
-        <div class="panel-body">
+        <div >
             <c:if test="${empty services}">
                 Услуги пока не заказаны ;)
             </c:if>
