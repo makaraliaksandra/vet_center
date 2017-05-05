@@ -41,6 +41,7 @@
                         <th>Дата</th>
                         <th>Время</th>
                         <th>Статус</th>
+                        <th>Операция</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -53,9 +54,11 @@
                             <th><c:out value="${s.time}"/></th>
                             <c:if test="${s.idDoctor != 0}">
                                 <th><c:out value="Подтверждено"/></th>
+                                <th><a href="<c:url value='/deleteService/${s.idService}'/>">Удалить</a></th>
                             </c:if>
                             <c:if test="${s.idDoctor == 0}">
                                 <th><c:out value="В обработке"/></th>
+                                <th><a href="<c:url value='/acceptService/${s.idService}'/>">Подтвердить</a></th>
                             </c:if>
                         </tr>
                     </c:forEach>
