@@ -89,7 +89,7 @@ public class UserController {
     @RequestMapping("makeChoice/{name}")
     public ModelAndView makeChoice(@PathVariable("name") String name) {
         logger.info("service page");
-
+System.out.println(name);
         Bdservice servList = bdservice.getBDService(name);
         return new ModelAndView("submitOrder", "servList", servList);
     }

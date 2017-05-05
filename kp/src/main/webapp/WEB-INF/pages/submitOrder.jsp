@@ -13,51 +13,53 @@
 </head>
 <body>
 <div class="two"><h1>VetProfi</h1></div>
-<div id="wrapper">
-        <h1>Выберите предпочитаемую дату</h1>
+<form>
+<fieldset>
+        <legend>Выберите предпочитаемую дату</legend>
 
-            <table id="keywords" cellspacing="0" cellpadding="0">
-                <thead>
-                    <tr><th colspan="2">Ваша заявка:</th></tr>
-                </thead>
-                <tbody>
+            <table>
+                <div class="main">
+                <tbody align="right">
                 <c item="${servList}">
+                    <div class="field">
                     <tr>
-                        <th bgcolor="#deb887"><span>Наименование услуги:</span></th>
-                        <th class="lalign"><c:out value="${servList.name}"/></th>
+                        <th><label for="name" style="font-weight: normal">Наименование услуги:</label></th>
+                        <th id="name" name="name" style="font-weight: normal;"><c:out value="${servList.name}"/></th>
                     </tr>
-                    <tr>
-                        <th bgcolor="#deb887"><span>Описание:</span></th>
-                        <td colspan="2"><c:out value="${servList.description}"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th bgcolor="#deb887"><span>Стоимость:</span></th>
-                        <th><c:out value="${servList.cost}"/></th></tr>
-                    <tr>
-                        <th bgcolor="#deb887"><span>Скидка:</span><br>
-                            <p >*Скидка может быть изменена, проверяйте "Личный кабинет"</p>
-                        </th>
-                        <th><c:out value="${servList.sale}"/></th>
 
+                    <div class="field">
+                    <tr>
+                        <th><label for="cost" style="font-weight: normal;">Стоимость:</label></th>
+                        <th id="cost" name="cost" style="font-weight: normal;"><c:out value="${servList.cost}"/></th>
+                    </tr></div>
+                    <div class="field">
+                    <tr>
+                        <th><label for="sale" style="font-weight: normal;">Скидка:</label><br>
+
+                        </th>
+                        <th id="sale" name="sale" style="font-weight: normal;"><c:out value="${servList.sale}"/><span>%</span></th>
                     </tr>
+                    </div>
                 </c>
                 </tbody>
+                </div>
             </table>
+
     <form action="submitOrder/${servList.name}"  modelAttribute="dateInput">
         <div class="field">
             <label for="date">Дата:</label>
             <input type="date" id="date" name="date" placeholder="mm/dd/yyyy"/>
-        <br>
-            <div align="center">
+        <br> <br>
+            <div align="center" style="margin-left: 26%">
                 <input type="submit" value="Заказать" class="button"/>
                 <input hidden type="text" name="command" value="Add" />
             </div>
         </div>
     </form>
-</div>
+</fieldset>
+</form>
 <br>
-<a href="index">Вернуться назад<span class="arrow">&rarr;</span></a>
+<a href="index" >Вернуться назад<span class="arrow">&rarr;</span></a>
 <br><br>
 </body>
 </html>

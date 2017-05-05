@@ -25,7 +25,7 @@
         <thead>
         <tr>
             <th><span>Название</span></th>
-            <th colspan="2"><span>Описание</span></th>
+            <th colspan="2" width="100"><span>Описание</span></th>
             <th><span>Стоимость</span></th>
             <th><span>Скидка</span></th>
             <th><span>Выбор</span></th>
@@ -35,7 +35,7 @@
         <c:forEach items="${servList}" var="s">
             <tr>
                 <th class="lalign"><c:out value="${s.name}"/></th>
-                <td colspan="2"><c:out value="${s.description}"/></td>
+                <td colspan="2" width="100"><c:out value="${s.description}"/></td>
                 <th><c:out value="${s.cost}"/></th>
                 <th><c:out value="${s.sale}"/></th>
                 <th><a href="<c:url value='/makeChoice/${s.name}'/>">Заказать</a></th>

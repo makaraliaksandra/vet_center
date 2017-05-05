@@ -45,8 +45,8 @@ public class BdserviceDAOlmpl implements BdserviceDAO {
             Bdservice serv = new Bdservice();
             String name = (String) userObject[0];
             float cost = (float) userObject[1];
-            int sale = (int) userObject[2];
-            String text = (String) userObject[3];
+            int sale = (int) userObject[3];
+            String text = (String) userObject[2];
             serv.setName(name);
             serv.setCost(cost);
             serv.setSale(sale);
