@@ -31,6 +31,11 @@ public class BdserviceDAOlmpl implements BdserviceDAO {
     }
 
     @Override
+    public Bdservice updateService(Bdservice service) {
+        return hibernateUtil.update(service);
+    }
+
+    @Override
     public List<Bdservice> getAllBdservices() {
         return hibernateUtil.fetchAll(Bdservice.class);
     }

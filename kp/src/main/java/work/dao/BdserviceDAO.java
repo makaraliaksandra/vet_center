@@ -11,4 +11,5 @@ public interface BdserviceDAO {
     public Bdservice getBdservice(String name);
     public List<Bdservice> getAllBdservices();
     public List<Bdservice> getAllBdservices(String name);
+    public Bdservice updateService(Bdservice service);
 }
