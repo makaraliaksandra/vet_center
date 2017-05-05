@@ -48,6 +48,8 @@
     </table>
 
 <br>
+<a href="bdServiceForm">Услуги</a>
+<br>
 <a href="index">Вернуться назад<span class="arrow">&rarr;</span></a>
 </body>
 </html>
