@@ -28,8 +28,8 @@
 
     </div>
 </header>
-<a href="question" class="button" >Задать вопрос</a>
 
+<a href="autorization"class="button" >Задать вопрос</a>
 <br><br>
 <div class="forums">
 

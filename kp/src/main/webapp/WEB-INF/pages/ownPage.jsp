@@ -22,6 +22,7 @@
             <h3 class="panel-title">
                 <div align="left"><b>Ваш личный кабинет:</b> </div>
                 <div align="right"><a href="toAddService">Заказ услуги</a></div>
+                <div align="right"><a href="question">Задать вопрос</a></div>
             </h3>
         </div>
         <div class="panel-body">
@@ -66,6 +67,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </div>
 <br>
+
 <a href="index">Вернуться назад<span class="arrow">&rarr;</span></a>
 
 </body>

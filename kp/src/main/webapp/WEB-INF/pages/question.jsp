@@ -16,7 +16,7 @@
 
 <div class="two"><h1>VetProfi</h1></div>
 
-<form id="registration" method="post" action="saveUser">
+<form>
     <fieldset>
         <legend>Вопрос доктору</legend>
         <div class="field">

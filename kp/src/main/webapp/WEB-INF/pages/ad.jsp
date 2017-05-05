@@ -15,7 +15,7 @@
     <fieldset>
         <legend>Объявление</legend>
         <div class="field">
-            <label>Текст объявления:</label>
+            <label>Содержание:</label>
             <textarea rows="10" cols="18" name="que" id="que" placeholder="Ad" maxlength="40" modelAttribute="userInfo"/></textarea>
         </div>
         <div class="field">
