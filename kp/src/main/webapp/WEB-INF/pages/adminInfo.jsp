@@ -9,6 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Страница администратора</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script type="text/javascript" src="../../js/check.js"></script>
     <style type="text/css">
         .myrow-container {
             margin: 20px;
@@ -31,6 +32,10 @@
                 Услуги пока не заказаны ;)
             </c:if>
             <c:if test="${not empty services}">
+                <a id="toggler" href="#">Открыть</a>
+                <div id="box" style="display: none;">
+                    <img src="../../img/pic_2.jpg" alt=""/>
+                </div>
 
                 <table class="table table-hover table-bordered">
                     <thead style="background-color: #bce8f1;">

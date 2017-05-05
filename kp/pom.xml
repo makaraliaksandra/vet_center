@@ -62,6 +62,12 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>jfree</groupId>
+            <artifactId>jfreechart</artifactId>
+            <version>1.0.9</version>
+        </dependency>
+
         <!-- Hibernate 4 dependencies -->
         <dependency>
             <groupId>org.hibernate</groupId>
