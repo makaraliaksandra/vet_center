@@ -13,11 +13,7 @@
 <div class="two"><h1>VetProfi</h1></div>
 <form id="registration" method="post" action="saveUser">
     <fieldset>
-        <legend>Сервис</legend>
-        <div class="field">
-            <label>Описание:</label>
-            <textarea rows="10" cols="18" name="que" id="que" placeholder="Description" maxlength="40" modelAttribute="userInfo"/></textarea>
-        </div>
+        <legend>Добавить сервис</legend>
         <div class="field">
             <label for="name">Название:</label>
             <input type="text" id="name" name="name" placeholder="Name"/>
@@ -26,7 +22,10 @@
             <label for="cost">Цена:</label>
             <input type="text" id="cost" name="cost" placeholder="Cost"/>
         </div>
-
+        <div class="field">
+            <label>Описание:</label>
+            <textarea rows="10" cols="21" name="que" id="que" placeholder="Description" maxlength="40" modelAttribute="userInfo"/></textarea>
+        </div>
         <br>
         <div align="center">
             <input type="submit" value="Отправить" class="button" value="saveInfo" onclick="return submitUserForm();"/>

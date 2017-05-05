@@ -22,7 +22,7 @@
         <div >
             <h3 >
                 <div align="left"><b>Панель администратора:</b> </div>
-                <div align="right"><a href="allServices">Услуги</a></div>
+                <div align="right"><a href="bdServiceForm">Услуги</a></div>
                 <div align="right"><a href="adManage">Объявления</a></div>
                 <div align="right"><a href="questionManage">Вопросы</a></div>
 
