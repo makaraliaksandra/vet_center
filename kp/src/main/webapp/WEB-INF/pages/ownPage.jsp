@@ -21,7 +21,7 @@
         <div class="panel-heading">
             <h3 class="panel-title">
                 <div align="left"><b>Ваши заказы:</b> </div>
-                <div align="right"><a href="service">Заказ услуги</a></div>
+                <div align="right"><a href="toAddService">Заказ услуги</a></div>
             </h3>
         </div>
         <div class="panel-body">
@@ -38,6 +38,7 @@
                         <th>Дата</th>
                         <th>Время</th>
                         <th>Статус</th>
+                        <th>Отмена</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -53,6 +54,7 @@
                             <c:if test="${s.idDoctor == 0}">
                                 <th><c:out value="В обработке"/></th>
                             </c:if>
+                            <th><a href="<c:url value='/refuseService/${s.idService}'/>">Отменить</a></th>
                         </tr>
                     </c:forEach>
                     </tbody>

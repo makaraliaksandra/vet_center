@@ -19,6 +19,14 @@ public class VetServiceImpl implements VetService {
     @Autowired
     private VetServiceDAO serviceDAO;
 
+    public work.entity.VetService updateService(work.entity.VetService service) {
+        return serviceDAO.updateService(service);
+    }
+    @Override
+    public void deleteService(int id) {
+        serviceDAO.deleteService(id);
+    }
+
     @Override
     public int createService(work.entity.VetService service) {
         return serviceDAO.createService(service);
@@ -28,6 +36,12 @@ public class VetServiceImpl implements VetService {
     public work.entity.VetService getService(String service) {
         return serviceDAO.getService(service);
     }
+
+    @Override
+    public work.entity.VetService getService(int service) {
+        return serviceDAO.getService(service);
+    }
+
 
     @Override
     public List<work.entity.VetService> getAllServices() {

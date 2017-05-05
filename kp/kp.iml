@@ -29,7 +29,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="" />
         <datasource-mapping>
-          <factory-entry name="Entities" />
+          <factory-entry name="Entities" value="8f1c176e-a61a-4991-b2d6-df0054a0d1f0" />
         </datasource-mapping>
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/META-INF/persistence.xml" />
       </configuration>
