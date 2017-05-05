@@ -38,6 +38,12 @@ public class VetServiceImpl implements VetService {
     }
 
     @Override
+    public work.entity.VetService getService(int service) {
+        return serviceDAO.getService(service);
+    }
+
+
+    @Override
     public List<work.entity.VetService> getAllServices() {
         return serviceDAO.getAllServices();
     }

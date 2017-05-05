@@ -29,6 +29,36 @@ public class VetServiceDAOImpl implements VetServiceDAO {
     }
 
     @Override
+    public work.entity.VetService getService(int ids) {
+        String query = "SELECT e.* FROM service e WHERE e.id_service like '%"+ ids +"%'";
+        List<Object[]> userObjects = hibernateUtil.<Object[]>fetchAll(query);
+        List<work.entity.VetService> users = new ArrayList<work.entity.VetService>();
+        for(Object[] userObject: userObjects) {
+            work.entity.VetService user = new work.entity.VetService();
+            int id = (int) userObject[0];
+            float cost = (float) userObject[1];
+            Date date = (Date) userObject[2];
+            int id_doctor= 0;
+            if (userObject[3]!=null) {
+                id_doctor = (int) userObject[3];
+            }
+            String login = (String) userObject[4];
+            String name = (String) userObject[5];
+            String time = (String) userObject[6];
+            user.setIdService(id);
+            user.setCost(cost);
+            user.setDate(date);
+            user.setIdDoctor(id_doctor);
+            user.setLogin(login);
+            user.setName(name);
+            user.setTime(time);
+            users.add(user);
+        }
+        System.out.println(users);
+        return users.get(0);
+    }
+
+    @Override
     public List<work.entity.VetService> getAllServices() {
         return hibernateUtil.fetchAll(work.entity.VetService.class);
     }

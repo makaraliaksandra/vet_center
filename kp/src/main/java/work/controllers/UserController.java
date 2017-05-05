@@ -29,6 +29,9 @@ public class UserController {
     private AdService adService;
 
     @Autowired
+    private DoctorService doctorService;
+
+    @Autowired
     private QuestionService questionService;
 
     @Autowired
@@ -87,7 +90,43 @@ public class UserController {
         return new ModelAndView("submitOrder", "servList", servList);
     }
 
-    @RequestMapping(value = {"makeChoice/index", "makeChoice/submitOrder/index", "refuseService/index"})
+    @RequestMapping("deleteService/{idService}")
+    public ModelAndView deleteService(@PathVariable("idService") int idService) {
+        logger.info("service page");
+        service.deleteService(idService);
+        List<VetService> services = service.getAllServices();
+        return new ModelAndView("adminInfo", "services", services);
+    }
+
+    @RequestMapping("acceptService/{idService}")
+    public ModelAndView acceptService(@PathVariable("idService") int idService) {
+        logger.info("service page");
+
+        VetService vs = new VetService();
+        vs=service.getService(idService);
+        vs.setIdDoctor(-1);
+        service.updateService(vs);
+        List<Doctor> doctors = doctorService.getAllDoctor();
+        System.out.println(doctors.get(0).getIdDoctor());
+        return new ModelAndView("doctors", "doctors", doctors);
+    }
+
+    @RequestMapping("doctorChoice/{idDoctor}")
+    public ModelAndView doctorChoice(@PathVariable("idDoctor") int idDoctor) {
+        logger.info("service page");
+
+        List<VetService> rs = service.getAllServices();
+        for (VetService s:rs) {
+            if (s.getIdDoctor()==-1) {
+                s.setIdDoctor(idDoctor);
+                service.updateService(s);
+            }
+        }
+        List<VetService> services = service.getAllServices();
+        return new ModelAndView("adminInfo", "services", services);
+    }
+
+    @RequestMapping(value = {"deleteService/index","makeChoice/index", "makeChoice/submitOrder/index", "refuseService/index"})
     public ModelAndView redirect() {
         return new ModelAndView("redirect:/index");
     }
@@ -104,6 +143,7 @@ public class UserController {
         Bdservice serv = bdservice.getBDService(name);
         newService.setName(name);
         newService.setCost(serv.getCost());
+        newService.setIdDoctor(0);
 
         service.createService(newService);
         List<VetService> services = service.getAllServices(principal.getName());
