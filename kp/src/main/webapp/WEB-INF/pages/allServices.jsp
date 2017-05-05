@@ -5,18 +5,19 @@
 <head>
     <title>Ветеринарный центр</title>
     <link rel="stylesheet" type="text/css" href="../../css/table.css">
+    <link rel="stylesheet" type="text/css" href="../../css/style.css">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.js"></script>
     <script type="text/javascript" src="../../js/sort.js"></script>
 
 </head>
 <body>
-<form action="searchServicetoAddtoBD">
+
     <div class="d7">
         <input type="text" name="searchName" placeholder="Искать здесь...">
         <button type="submit"></button>
     </div>
-</form>
+
 <br>
     <h1>Все предоставляемые услуги</h1>
 
@@ -48,8 +49,8 @@
     </table>
 
 <br>
-<a href="bdServiceForm">Услуги</a>
-<br>
+<a href="bdServiceForm" class="button">Добавить</a>
+<br><br><br>
 <a href="index">Вернуться назад<span class="arrow">&rarr;</span></a>
 </body>
 </html>

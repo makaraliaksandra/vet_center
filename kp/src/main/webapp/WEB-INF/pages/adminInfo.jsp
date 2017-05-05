@@ -9,6 +9,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Страница администратора</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="../../css/style.css">
     <script type="text/javascript" src="../../js/check.js"></script>
     <style type="text/css">
         .myrow-container {
@@ -22,9 +24,9 @@
         <div >
             <h3 >
                 <div align="left"><b>Панель администратора:</b> </div>
-                <div align="right"><a href="allServices">Услуги</a></div>
-                <div align="right"><a href="adManage">Объявления</a></div>
-                <div align="right"><a href="questionManage">Вопросы</a></div>
+                <div align="right" ><a href="allServices"class="button">  Наши услуги  </a></div> <br>
+                <div align="right" ><a href="adManage" class="button">Объявления</a></div> <br>
+                <div align="right" ><a href="questionManage" class="button">  Вопросы</a></div><br>
 
             </h3>
         </div>
@@ -33,7 +35,7 @@
                 Услуги пока не заказаны ;)
             </c:if>
             <c:if test="${not empty services}">
-                <a id="toggler" href="#">Открыть</a>
+                <div align="right" > <a id="toggler" href="#" class="button">Статистика</a></div><br>
                 <div id="box" style="display: none;">
                     <img src="../../img/pic_2.jpg" usemap="#chart" alt=""/>
                 </div>
