@@ -21,6 +21,10 @@ public class QuestionServiceImpl implements QuestionService {
     @Autowired
     private QuestionDAO QuestionDAO;
 
+    public Question updateQuestion(Question service) {
+        return QuestionDAO.updateQuestion(service);
+    }
+
     @Override
     public int createQuestion(Question ad) {
         return QuestionDAO.createQuestion(ad);

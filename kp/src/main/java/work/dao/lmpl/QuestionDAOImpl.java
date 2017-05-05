@@ -18,6 +18,11 @@ public class QuestionDAOImpl implements QuestionDAO {
     private HibernateUtil hibernateUtil;
 
     @Override
+    public Question updateQuestion(Question service) {
+        return hibernateUtil.update(service);
+    }
+
+    @Override
     public int createQuestion(Question qw) {
         return (int) hibernateUtil.create(qw);
     }

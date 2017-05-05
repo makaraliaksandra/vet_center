@@ -157,7 +157,8 @@ System.out.println(name);
         return new ModelAndView("adminInfo", "services", services);
     }
 
-    @RequestMapping(value = {"makeSale/index","deleteService/index","makeChoice/index", "makeChoice/submitOrder/index", "refuseService/index"})
+    @RequestMapping(value = {"makeSale/index","deleteService/index","makeChoice/index", "makeChoice/submitOrder/index",
+            "answer/index", "answer/submitAnswer/index", "refuseService/index"})
     public ModelAndView redirect() {
         return new ModelAndView("redirect:/index");
     }
@@ -275,6 +276,40 @@ System.out.println(name);
 
         List<VetService> services = service.getAllServices(user.getLogin());
         return new ModelAndView("ownPage", "services", services);
+    }
+
+    @RequestMapping("answer/submitAnswer/{idQuestion}")
+    public ModelAndView submitAnswer(@PathVariable("idQuestion") Integer idQuestion, @ModelAttribute("que") Question que) {
+        List<Question> q = questionService.getAllQuestions();
+        for (Question qs:q){
+            if (qs.getIdQuestion()==idQuestion) {
+                qs.setAnswer(que.getAnswer());
+                qs.setStatus(1);
+                questionService.updateQuestion(qs);
+                break;
+            }
+        }
+        List<Question> queList = questionService.getAllQuestions();
+        return new ModelAndView("questionManage", "queList", queList);
+    }
+
+    @RequestMapping("answer/{idQuestion}")
+    public ModelAndView answer(@PathVariable("idQuestion") Integer idQuestion) {
+        List<Question> q = questionService.getAllQuestions();
+        Question queList = new Question();
+        for (Question qs:q){
+            if (qs.getIdQuestion()==idQuestion) {
+                queList=qs;
+                break;
+            }
+        }
+        return new ModelAndView("answerForQuestion", "queList", queList);
+    }
+
+    @RequestMapping("questionManage")
+    public ModelAndView questionManage() {
+        List<Question> queList = questionService.getAllQuestions();
+        return new ModelAndView("questionManage", "queList", queList);
     }
 
     @RequestMapping("saveBDService")
