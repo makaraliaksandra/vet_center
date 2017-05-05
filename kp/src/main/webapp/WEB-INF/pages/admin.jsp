@@ -14,7 +14,7 @@
 
 <form class="auth" action="${pageContext.request.contextPath}/j_security_check" method='POST'>
     <fieldset>
-        <h4>Авторизация администратора</h4>
+        <legend>Авторизация администратора</legend>
         <p>Логин:</p>
         <input type="text" class="login-control" id="login" name="login" placeholder="Login" />
         <p>Пароль:</p>

@@ -2,6 +2,9 @@
 <html>
 <head>
     <title>Ветеринарный центр</title>
+    <link rel="stylesheet" type="text/css" href="../../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../css/animate.css">
+    <link rel="stylesheet" type="text/css" href="../../css/main.css">
     <link rel="stylesheet" type="text/css" href="../../css/style.css">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.js"></script>
@@ -10,7 +13,9 @@
     <script src="js/app.js"></script>
 </head>
 <body>
+
 <div class="two"><h1>VetProfi</h1></div>
+
 <form id="registration" method="post" action="saveUser">
     <fieldset>
         <legend>Вопрос доктору</legend>

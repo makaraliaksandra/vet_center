@@ -17,11 +17,6 @@
 
 <header>
   <div class="container">
-
-    <!-- <a href="#" class="logo">
-       <img src="img/logo.png" alt="Heros"/>
-     </a> -->
-
     <nav>
       <ul>
         <li>

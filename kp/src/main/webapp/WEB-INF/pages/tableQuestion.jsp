@@ -8,6 +8,26 @@
     <link rel="stylesheet" type="text/css" href="../../css/main.css">
 </head>
 <body>
+<header>
+    <div class="container">
+        <nav>
+            <ul>
+                <li>
+                    <form action="//google.com/search" target="_blank">
+                        <input name="q" />
+                        <input type="image" src="//google.com/favicon.ico" />
+                    </form>
+                </li>
+                <li><a href="table">Услуги</a></li>
+                <li><a href="tableAd">Объявления</a></li>
+                <li><a href="tableQuestion">Вопросы</a></li>
+                <li><a href="autorization">Личный кабинет</a></li>
+                <li><a href="service">Заказ услуги</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
 <a href="question" class="button" >Задать вопрос</a>
 
 <br><br>
