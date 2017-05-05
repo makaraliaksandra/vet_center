@@ -3,6 +3,7 @@ package work.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import work.PieChart_AWT;
 import work.entity.*;
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,9 @@ import org.springframework.web.servlet.ModelAndView;
 import work.entity.VetService;
 import work.service.*;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.*;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
@@ -205,6 +209,7 @@ public class UserController {
         return new ModelAndView("table", "servList", servList);
     }
 
+
     @RequestMapping("searchServicetoAdd")
     public ModelAndView searchToAdd(@RequestParam("searchName") String searchName) {
         logger.info("Searching the Service to add. Search by: "+searchName);
@@ -271,7 +276,9 @@ public class UserController {
     }
 
     @RequestMapping(value = "/adminInfo", method = RequestMethod.GET)
-    public ModelAndView adminPage(Model model) {
+    public ModelAndView adminPage(Model model) throws IOException {
+        /*PieChart_AWT pie = new PieChart_AWT();
+        pie.newPieChart();*/
         List<VetService> services = service.getAllServices();
         return new ModelAndView("adminInfo", "services", services);
     }
