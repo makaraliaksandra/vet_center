@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class="two"><h1>VetProfi</h1></div>
-<form id="registration" method="post" action="saveUser">
+<form id="registration" method="post" action="saveBDService" modelAttribute="bdService">
     <fieldset>
         <legend>Добавить сервис</legend>
         <div class="field">
@@ -24,12 +24,12 @@
         </div>
         <div class="field">
             <label>Описание:</label>
-            <textarea rows="10" cols="21" name="que" id="que" placeholder="Description" maxlength="40" modelAttribute="userInfo"/></textarea>
+            <textarea rows="10" cols="21" name="description" id="que" placeholder="Description" maxlength="40"></textarea>
         </div>
         <br>
         <div align="center">
             <input type="submit" value="Отправить" class="button" value="saveInfo" onclick="return submitUserForm();"/>
-            <input type="submit" value="Очистить форму" class="button"/>
+            <input type="reset" value="Очистить форму" class="button"/>
             <input hidden type="text" name="command" value="Add" />
         </div>
 
