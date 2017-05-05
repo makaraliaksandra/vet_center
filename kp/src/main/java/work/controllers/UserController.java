@@ -327,4 +327,10 @@ System.out.println(name);
         List<User> userList = userService.getAllUsers();
         return new ModelAndView("userList", "userList", userList);
     }
+
+    @RequestMapping("bdServiceForm")
+    public ModelAndView bdServiceForm() {
+        logger.info("bdServiceForm");
+        return new ModelAndView("bdServiceForm");
+    }
 }
