@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="../../css/main.css">
 </head>
 <body>
-<a href="authorization" class="button" >Разместить объявление</a>
+<a href="autorization" class="button" >Разместить объявление</a>
 <br><br>
 <c:if test="${adList.size()==3}">
 <div class="container">
@@ -25,7 +25,7 @@
         <div class="column3">
             <p><c:out value="${adList.get(2).textAd}"/></p>
         </div>
-            <>
+
     </div>
 </div>
 </c:if>
