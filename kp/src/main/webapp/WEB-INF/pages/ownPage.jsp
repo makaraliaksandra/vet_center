@@ -24,6 +24,7 @@
                 <div align="right"><a href="toAddService">Заказ услуги</a></div>
                 <div align="right"><a href="question">Задать вопрос</a></div>
                 <div align="right"><a href="ad">Разместить объявление</a></div>
+                <div align="right"><a href="/download">Скачать файл расходов</a></div>
             </h3>
         </div>
         <div class="panel-body">

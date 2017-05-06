@@ -41,7 +41,7 @@
 
             <div class="field">
                 <label >Ответ:</label>
-                <textarea id="answer" cols="30" rows="10" name="answer" id="answer" placeholder="Ответ..."></textarea>
+                <textarea id="answer" cols="30" rows="10" name="answer"placeholder="Ответ..."></textarea>
                 <br> <br>
                 <div align="center" style="margin-left: 26%">
                     <input type="submit" value="Отправить" class="button"/>
