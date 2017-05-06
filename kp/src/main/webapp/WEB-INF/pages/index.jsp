@@ -80,7 +80,7 @@
       </li>
       <li class="animated wow fadeInRight" data-wow-delay=".4s">
         <h3>Как уговорить парня завести животное</h3>
-        <p>Все очень очень сложно</p>
+        <p>Гайд приведет вам неоспоримые аргументы и факты ...</p>
         <a href="#">читать далее<span class="arrow">&rarr;</span></a>
       </li>
     </ul>
@@ -91,8 +91,7 @@
 <section class="projects container clearfix">
 
   <div class="section_title animated wow fadeInUp">
-    <h2>Отзывы клиентов</h2>
-    <a href="" class="details">Все отзывы<span class="arrow">&rarr;</span></a>
+    <h2>Наши партнеры</h2>
   </div>
 
   <div class="projects_list clearfix">
