@@ -29,7 +29,7 @@
         <li><a href="tableAd">Объявления</a></li>
         <li><a href="tableQuestion">Вопросы</a></li>
         <li><a href="autorization">Личный кабинет</a></li>
-        <li><a href="service">Заказ услуги</a></li>
+        <li><a href="service">О нас</a></li>
       </ul>
     </nav>
 
