@@ -3,8 +3,8 @@
 <html>
 <head>
     <title>Table questions</title>
-    <link rel="stylesheet" type="text/css" href="../../css/tableQuestion.css">
     <link rel="stylesheet" type="text/css" href="../../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../../css/tableQuestion.css">
     <link rel="stylesheet" type="text/css" href="../../css/main.css">
 </head>
 <body>
@@ -15,7 +15,8 @@
                 <li>
                     <form action="//google.com/search" target="_blank">
                         <input name="q" />
-                        <input type="image" src="//google.com/favicon.ico" />
+                        <input type="image" src="../../img/g.png" />
+
                     </form>
                 </li>
                 <li><a href="table">Услуги</a></li>
@@ -28,7 +29,8 @@
 
     </div>
 </header>
-
+<main>
+<br><br>
 <a href="autorization"class="button" >Задать вопрос</a>
 <br><br>
 <div class="forums">
@@ -57,5 +59,6 @@
 </div>
 <br>
 <a href="index">Вернуться назад<span class="arrow">&rarr;</span></a>
+</main>
 </body>
 </html>

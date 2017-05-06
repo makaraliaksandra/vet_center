@@ -22,7 +22,7 @@
         <li>
           <form action="//google.com/search" target="_blank">
             <input name="q" />
-            <input type="image" src="//google.com/favicon.ico" />
+            <input type="image" src="../../img/g.png" />
           </form>
         </li>
         <li><a href="table">Услуги</a></li>

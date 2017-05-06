@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="../../css/main.css">
 </head>
 <body>
-<a href="ad" class="button" >Разместить объявление</a>
+<a href="authorization" class="button" >Разместить объявление</a>
 <br><br>
 <c:if test="${adList.size()==3}">
 <div class="container">

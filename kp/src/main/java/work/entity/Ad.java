@@ -9,63 +9,52 @@ public class Ad {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_ad;
+    private int idAd;
 
-    @Column(name = "text_ad")
-    private String text_ad;
+    @Column(name = "textAd")
+    private String textAd;
 
-    @Column(name = "start_day")
-    private Date start_day;
+    @Column(name = "startDay")
+    private Date startDay;
 
-    @Column(name = "active_period")
-    private String active_period;
+    @Column(name = "email")
+    private String email;
 
     @Column(name = "login")
     private String login;
 
-    @Column(name = "id_category")
-    private Integer id_category;
-
     public int getIdAd() {
-        return id_ad;
+        return idAd;
     }
 
     public void setIdAd(int idAd) {
-        this.id_ad = idAd;
+        this.idAd = idAd;
     }
 
-    @Basic
-    @Column(name = "text_ad")
     public String getTextAd() {
-        return text_ad;
+        return textAd;
     }
 
     public void setTextAd(String textAd) {
-        this.text_ad = textAd;
+        this.textAd = textAd;
     }
 
-    @Basic
-    @Column(name = "start_day")
     public Date getStartDay() {
-        return start_day;
+        return startDay;
     }
 
     public void setStartDay(Date startDay) {
-        this.start_day = startDay;
+        this.startDay = startDay;
     }
 
-    @Basic
-    @Column(name = "active_period")
-    public String getActivePeriod() {
-        return active_period;
+    public String getEmail() {
+        return email;
     }
 
-    public void setActivePeriod(String activePeriod) {
-        this.active_period = activePeriod;
+    public void setEmail(String activePeriod) {
+        this.email = activePeriod;
     }
 
-    @Basic
-    @Column(name = "login")
     public String getLogin() {
         return login;
     }
@@ -74,13 +63,4 @@ public class Ad {
         this.login = login;
     }
 
-    @Basic
-    @Column(name = "id_category")
-    public Integer getIdCategory() {
-        return id_category;
-    }
-
-    public void setIdCategory(Integer idCategory) {
-        this.id_category = idCategory;
-    }
 }

@@ -212,7 +212,11 @@ System.out.println(name);
     public ModelAndView tableQuestion() {
         logger.info("tableQuestion");
 
-        List<Question> questionList = questionService.getAllQuestions();
+        List<Question> question = questionService.getAllQuestions();
+        List<Question> questionList = new ArrayList<>();
+        for(Question q:question) {
+            if (q.getStatus()!=0) questionList.add(q);
+        }
         return new ModelAndView("tableQuestion", "questionList", questionList);
 
     }
@@ -273,6 +277,19 @@ System.out.println(name);
         userInfo.setLogin(user.getLogin());
         userService.createUser(user);
         userInfoService.createUserInfo(userInfo);
+
+        List<VetService> services = service.getAllServices(user.getLogin());
+        return new ModelAndView("ownPage", "services", services);
+    }
+
+    @RequestMapping("saveAd")
+    public ModelAndView saveAd(@ModelAttribute("newAd") Ad newAd, Principal principal) {
+        UserInfo user = userInfoService.getUserInfo(principal.getName());
+        newAd.setEmail(user.getEmail());
+        newAd.setLogin(user.getLogin());
+        java.util.Date d = new java.util.Date();
+        newAd.setStartDay(new java.sql.Date(d.getTime()));
+        adService.createAd(newAd);
 
         List<VetService> services = service.getAllServices(user.getLogin());
         return new ModelAndView("ownPage", "services", services);

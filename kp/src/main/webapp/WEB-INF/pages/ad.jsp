@@ -1,48 +1,31 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page session="false"%>
 <html>
 <head>
     <title>Ветеринарный центр</title>
     <link rel="stylesheet" type="text/css" href="../../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../../css/table.css">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.js"></script>
-
-    <script src="js/check.js"></script>
-    <script src="js/app.js"></script>
 </head>
 <body>
 <div class="two"><h1>VetProfi</h1></div>
-<form id="registration" method="post" action="saveUser">
+<form action="saveAd"  modelAttribute="newAd">
     <fieldset>
-        <legend>Объявление</legend>
-        <div class="field">
-            <label>Содержание:</label>
-            <textarea rows="10" cols="18" name="que" id="que" placeholder="Ad" maxlength="40" modelAttribute="userInfo"/></textarea>
-        </div>
-        <div class="field">
-            <label for="date">Дата:</label>
-            <input type="date" id="date" name="date" placeholder="mm/dd/yyyy"/>
-        </div>
-        <div class="field">
-            <label for="service">Категория:</label>
-            <select name="category" id="service">
-                <option>Category</option>
-                <option value="Категория1">Категория1</option>
-                <option value="Категория2">Категория2</option>
-                <option value="Категория3">Категория3</option>
-            </select>
-        </div>
-
-        <br>
-        <div align="center">
-            <input type="submit" value="Отправить" class="button" value="saveInfo" onclick="return submitUserForm();"/>
-            <input type="submit" value="Очистить форму" class="button"/>
-            <input hidden type="text" name="command" value="Add" />
-        </div>
-
-    </fieldset>
-</form>
-
+        <legend>Введите текст объявления</legend>
+            <div class="field">
+                <label >Объявление:</label>
+                <textarea id="textAd" cols="30" rows="10" name="textAd" placeholder="Ответ..."></textarea>
+                <br> <br>
+                <div align="center" style="margin-left: 26%">
+                    <input type="submit" value="Отправить" class="button"/>
+                    <input hidden type="text" name="command" value="Add" />
+                </div>
+            </div>
+    </fieldset></form>
 <br>
-<a href="index">Вернуться назад<span class="arrow">&rarr;</span></a>
+<a href="index" >Вернуться назад<span class="arrow">&rarr;</span></a>
+<br><br>
 </body>
 </html>
