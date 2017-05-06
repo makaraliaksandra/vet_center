@@ -28,10 +28,10 @@
         </div>
         <br>
         <div class="bottom">
-          <p><span>5</span> users</p>
-          <p><span>10</span> projects</p>
-          <p><span>10GB</span> amount of space</p>
-          <p><span>5</span> e-mail accounts</p>
+          <p>Стандартная услуга</p>
+          <p>Проводится любым специалистом</p>
+          <p>Необходима регулярно</p>
+          <br>
           <br>
           <img src="../../img/osmotr.jpg" width="165" height="115" alt="Client 1" />
         </div>
@@ -44,11 +44,10 @@
         </div>
         <br>
         <div class="bottom">
-          <p><span>10</span> users</p>
-          <p><span>50</span> projects</p>
-          <p><span>50GB</span> amount of space</p>
-          <p><span>10</span> e-mail accounts</p>
-          <br>
+          <p>Новая вакцина</p>
+          <p>Импортные продукт</p>
+          <p>Прводится младшим персоналом</p>
+          <br><br>
           <img src="../../img/priv.jpg" width="165" height="115" alt="Client 1" />
         </div>
       </li>
@@ -60,11 +59,10 @@
         </div>
         <br>
         <div class="bottom">
-          <p><span>100</span> users</p>
-          <p><span>Unlimited</span> projects</p>
-          <p><span>1TB</span> amount of space</p>
-          <p><span>100</span> e-mail accounts</p>
-          <br>
+          <p>Супер-предложение</p>
+          <p>Проводится для собак и кошек</p>
+          <p>Квалифицированные грумеры</p>
+          <br><br>
           <img src="../../img/groom.jpg" width="165" height="115" alt="Client 1" />
         </div>
       </li>
@@ -76,11 +74,10 @@
         </div>
         <br>
         <div class="bottom">
-          <p><span>Unlimited</span> users</p>
-          <p><span>Unlimited</span> projects</p>
-          <p><span>Unlimited</span> amount of space</p>
-          <p><span>Unlimited</span> e-mail accounts</p>
-          <br>
+          <p>!!Новинка!!</p>
+          <p>Только для собак</p>
+          <p>Ограниченное предложение</p>
+          <br><br>
           <img src="../../img/massag.jpg" width="165" height="115" alt="Client 1" />
         </div>
       </li>
