@@ -13,7 +13,7 @@
 </head>
 <body>
 <div class="two"><h1>VetProfi</h1></div>
-<form>
+<form action="submitOrder/${servList.name}"  modelAttribute="dateInput">
 <fieldset>
         <legend>Выберите предпочитаемую дату</legend>
 
@@ -39,13 +39,13 @@
                         </th>
                         <th id="sale" name="sale" style="font-weight: normal;"><c:out value="${servList.sale}"/><span>%</span></th>
                     </tr>
-                    </div>
+                    </div></div>
                 </c>
                 </tbody>
                 </div>
             </table>
 
-    <form action="submitOrder/${servList.name}"  modelAttribute="dateInput">
+
         <div class="field">
             <label for="date">Дата:</label>
             <input type="date" id="date" name="date" placeholder="mm/dd/yyyy"/>
@@ -55,7 +55,7 @@
                 <input hidden type="text" name="command" value="Add" />
             </div>
         </div>
-    </form>
+
 </fieldset>
 </form>
 <br>

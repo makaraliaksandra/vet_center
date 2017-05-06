@@ -13,14 +13,35 @@
 </head>
 <body>
 <div class="two"><h1>VetProfi</h1></div>
-<form action="saveAd"  modelAttribute="newAd">
+<form action="submitAnswer/${queList.idQuestion}"  modelAttribute="que">
     <fieldset>
-        <legend>Форма для объявления</legend>
+        <legend>Дайте ответ на вопрос пользователя</legend>
         <c item="${queList}">
+        <table>
+            <div class="main">
+                <tbody align="right">
+
+                    <div class="field">
+                        <tr>
+                            <th><label for="name" style="font-weight: normal">Пользователь:</label></th>
+                            <th id="name" name="name" style="font-weight: normal;"><c:out value="${queList.login}"/></th>
+                        </tr>
+
+                        <div class="field">
+                            <tr>
+                                <th><label for="textQuestion" style="font-weight: normal;">Вопрос:</label></th>
+                                <th id="textQuestion" name="textQuestion" style="font-weight: normal;"><c:out value="${queList.textQuestion}"/></th>
+                            </tr></div>
+                    </div>
+
+                </tbody>
+            </div>
+        </table>
+
 
             <div class="field">
-                <label >Объявление:</label>
-                <textarea cols="30" rows="10" name="textAd" placeholder="Продам гараж и Рыжика..."></textarea>
+                <label >Ответ:</label>
+                <textarea id="answer" cols="30" rows="10" name="answer"placeholder="Ответ..."></textarea>
                 <br> <br>
                 <div align="center" style="margin-left: 26%">
                     <input type="submit" value="Отправить" class="button"/>

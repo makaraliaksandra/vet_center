@@ -1,7 +1,9 @@
 package work.controllers;
 
+import com.mchange.v2.io.FileUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import work.PieChart_AWT;
 import work.entity.*;
@@ -12,8 +14,11 @@ import work.entity.VetService;
 import work.service.*;
 
 import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.net.URLConnection;
+import java.nio.charset.Charset;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
@@ -157,7 +162,8 @@ System.out.println(name);
         return new ModelAndView("adminInfo", "services", services);
     }
 
-    @RequestMapping(value = {"makeSale/index","deleteService/index","makeChoice/index", "makeChoice/submitOrder/index", "refuseService/index"})
+    @RequestMapping(value = {"makeSale/index","deleteService/index","makeChoice/index", "makeChoice/submitOrder/index",
+            "answer/index", "answer/submitAnswer/index", "refuseService/index"})
     public ModelAndView redirect() {
         return new ModelAndView("redirect:/index");
     }
@@ -211,7 +217,11 @@ System.out.println(name);
     public ModelAndView tableQuestion() {
         logger.info("tableQuestion");
 
-        List<Question> questionList = questionService.getAllQuestions();
+        List<Question> question = questionService.getAllQuestions();
+        List<Question> questionList = new ArrayList<>();
+        for(Question q:question) {
+            if (q.getStatus()!=0) questionList.add(q);
+        }
         return new ModelAndView("tableQuestion", "questionList", questionList);
 
     }
@@ -275,6 +285,123 @@ System.out.println(name);
 
         List<VetService> services = service.getAllServices(user.getLogin());
         return new ModelAndView("ownPage", "services", services);
+    }
+
+    @RequestMapping(value="/download", method = RequestMethod.GET)
+    public void downloadFile(HttpServletResponse response, Principal principal) throws IOException {
+        File file1 = new File(principal.getName()+".txt");
+
+        try {
+            //проверяем, что если файл не существует то создаем его
+            if(!file1.exists()){
+                file1.createNewFile();
+            }
+
+            //PrintWriter обеспечит возможности записи в файл
+            PrintWriter out = new PrintWriter(file1.getAbsoluteFile());
+
+            try {
+                //Записываем текст в файл
+                out.print(principal.getName());
+            } finally {
+                //После чего мы должны закрыть файл
+                //Иначе файл не запишется
+                out.close();
+            }
+        } catch(IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        File file = null;
+        file = new File(principal.getName()+".txt");
+
+        if(!file.exists()){
+            String errorMessage = "Sorry. Файла не существует";
+            System.out.println(errorMessage);
+            OutputStream outputStream = response.getOutputStream();
+            outputStream.write(errorMessage.getBytes(Charset.forName("UTF-8")));
+            outputStream.close();
+            return;
+        }
+
+        String mimeType= URLConnection.guessContentTypeFromName(file.getName());
+        if(mimeType==null){
+            System.out.println("mimetype is not detectable, will take default");
+            mimeType = "application/octet-stream";
+        }
+
+        System.out.println("mimetype : "+mimeType);
+
+        response.setContentType(mimeType);
+
+        /* "Content-Disposition : inline" will show viewable types [like images/text/pdf/anything viewable by browser] right on browser
+            while others(zip e.g) will be directly downloaded [may provide save as popup, based on your browser setting.]*/
+        response.setHeader("Content-Disposition", String.format("inline; filename=\"" + file.getName() +"\""));
+
+
+        /* "Content-Disposition : attachment" will be directly download, may provide save as popup, based on your browser setting*/
+        //response.setHeader("Content-Disposition", String.format("attachment; filename=\"%s\"", file.getName()));
+
+        response.setContentLength((int)file.length());
+
+        InputStream inputStream = new BufferedInputStream(new FileInputStream(file));
+
+        //Copy bytes from source to destination(outputstream in this example), closes both streams.
+        FileCopyUtils.copy(inputStream, response.getOutputStream());
+    }
+
+    @RequestMapping("saveAd")
+    public ModelAndView saveAd(@ModelAttribute("newAd") Ad newAd, Principal principal) {
+        UserInfo user=new UserInfo();
+        List<UserInfo> users = userInfoService.getAllUsersInfo();
+        for (UserInfo us:users){
+            if (us.getLogin().equals(principal.getName())) {
+                user=us;
+                break;
+            }
+        }
+        newAd.setEmail(user.getEmail());
+        newAd.setLogin(user.getLogin());
+        java.util.Date d = new java.util.Date();
+        newAd.setStartDay(new java.sql.Date(d.getTime()));
+        adService.createAd(newAd);
+
+        List<VetService> services = service.getAllServices(user.getLogin());
+        return new ModelAndView("ownPage", "services", services);
+    }
+
+    @RequestMapping("answer/submitAnswer/{idQuestion}")
+    public ModelAndView submitAnswer(@PathVariable("idQuestion") Integer idQuestion, @ModelAttribute("que") Question que) {
+        List<Question> q = questionService.getAllQuestions();
+        for (Question qs:q){
+            if (qs.getIdQuestion()==idQuestion) {
+                qs.setAnswer(que.getAnswer());
+                qs.setStatus(1);
+                questionService.updateQuestion(qs);
+                break;
+            }
+        }
+        List<Question> queList = questionService.getAllQuestions();
+        return new ModelAndView("questionManage", "queList", queList);
+    }
+
+    @RequestMapping("answer/{idQuestion}")
+    public ModelAndView answer(@PathVariable("idQuestion") Integer idQuestion) {
+        List<Question> q = questionService.getAllQuestions();
+        Question queList = new Question();
+        for (Question qs:q){
+            if (qs.getIdQuestion()==idQuestion) {
+                queList=qs;
+                break;
+            }
+        }
+        return new ModelAndView("answerForQuestion", "queList", queList);
+    }
+
+    @RequestMapping("questionManage")
+    public ModelAndView questionManage() {
+        List<Question> queList = questionService.getAllQuestions();
+        return new ModelAndView("questionManage", "queList", queList);
     }
 
     @RequestMapping("saveBDService")
