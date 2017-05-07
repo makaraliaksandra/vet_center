@@ -27,9 +27,6 @@
                     <input hidden type="text" name="command" value="Add" />
                 </div>
             </div>
-            <div>
-                <b style="font-size: 18px; color: red;">Пустое поле</b><br />
-            </div>
         </c>
     </fieldset></form>
 <br>

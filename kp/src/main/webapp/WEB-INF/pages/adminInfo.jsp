@@ -37,7 +37,7 @@
             <c:if test="${not empty services}">
                 <div align="right" > <a id="toggler" href="#" class="button">Статистика</a></div><br>
                 <div id="box" style="display: none;">
-                    <img src="../../img/pic_2.jpg" usemap="#chart" alt=""/>
+                    <img src="../../img/pieChart.png" usemap="#chart" alt=""/>
                 </div>
 
                 <table class="table table-hover table-bordered">
