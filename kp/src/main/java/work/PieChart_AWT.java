@@ -46,7 +46,7 @@ public class PieChart_AWT {
 
         try {
             final ChartRenderingInfo info = new ChartRenderingInfo(new StandardEntityCollection());
-            final File file1 = new File("E:\\pieChart.png");
+            final File file1 = new File("D:\\pieChart.png");
             file1.createNewFile();
             ChartUtilities.saveChartAsPNG(file1, chart, 600, 400, info);
         } catch (Exception e) {

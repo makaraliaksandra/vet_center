@@ -1,6 +1,12 @@
 package work.controllers;
 
 import com.mchange.v2.io.FileUtils;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartRenderingInfo;
+import org.jfree.chart.ChartUtilities;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.entity.StandardEntityCollection;
+import org.jfree.data.general.DefaultPieDataset;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
@@ -21,7 +27,9 @@ import java.net.URLConnection;
 import java.nio.charset.Charset;
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class UserController {
@@ -289,31 +297,29 @@ System.out.println(name);
 
     @RequestMapping(value="/download", method = RequestMethod.GET)
     public void downloadFile(HttpServletResponse response, Principal principal) throws IOException {
-        File file1 = new File(principal.getName()+".txt");
+        String pathToFile=principal.getName()+".txt";
+        File file1=new File(pathToFile);
+        file1.mkdirs();
 
-        try {
-            //проверяем, что если файл не существует то создаем его
-            if(!file1.exists()){
-                file1.createNewFile();
-            }
-
-            //PrintWriter обеспечит возможности записи в файл
-            PrintWriter out = new PrintWriter(file1.getAbsoluteFile());
-
-            try {
-                //Записываем текст в файл
-                out.print(principal.getName());
-            } finally {
-                //После чего мы должны закрыть файл
-                //Иначе файл не запишется
-                out.close();
-            }
-        } catch(IOException e) {
-            throw new RuntimeException(e);
+        try
+        {
+            // открываем поток для записи
+            BufferedWriter bw = new BufferedWriter(new FileWriter(file1));
+            // пишем данные
+            bw.write("НЕКИЕ_СТРОКОВЫЕ_ДАННЫЕ");
+            // закрываем поток
+            bw.close();
+        } catch (IOException e)
+        {
+            e.printStackTrace();
         }
 
         File file = null;
-        file = new File(principal.getName()+".txt");
+        //file = new File(principal.getName()+".txt");
+
+        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+        file = new File(classloader.getResource(pathToFile).getFile());
+
 
         if(!file.exists()){
             String errorMessage = "Sorry. Файла не существует";
@@ -454,7 +460,42 @@ System.out.println(name);
 
     @RequestMapping(value = "/adminInfo", method = RequestMethod.GET)
     public ModelAndView adminPage(Model model) throws IOException {
-        PieChart_AWT pie = new PieChart_AWT();
+        /*final DefaultPieDataset result = new DefaultPieDataset();
+        List<VetService> vs = service.getAllServices();
+        String[] mas = new String[vs.size()];
+
+            for (int i=0;i<vs.size();i++) {
+                mas[i] = vs.get(i).getName();
+            }
+            int j=0, k=0;
+            Map<String, Integer> map = new HashMap<String, Integer>();
+            for(int i=0;i<mas.length;++i, j++){
+                if(map.containsKey(mas[j])) {
+
+                    map.put(mas[j], map.get(mas[j])+1);
+
+                }
+                else {map.put(mas[j], 1);
+                }
+            }
+            for (Map.Entry entry : map.entrySet()) {
+                result.setValue(entry.getKey().toString(), (int)entry.getValue());
+            }
+
+
+        JFreeChart chart = ChartFactory.createPieChart
+                ("Pie Chart ", result, true, true, false);
+
+        try {
+            final ChartRenderingInfo info = new ChartRenderingInfo(new StandardEntityCollection());
+            final File file1 = new File("d:\\Work\\vet_center\\kp\\src\\main\\webapp\\img\\pieChart.png");
+            file1.createNewFile();
+            ChartUtilities.saveChartAsPNG(file1, chart, 600, 400, info);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        */
+
         List<VetService> services = service.getAllServices();
         return new ModelAndView("adminInfo", "services", services);
     }
@@ -468,6 +509,12 @@ System.out.println(name);
 
     @RequestMapping("bdServiceForm")
     public ModelAndView bdServiceForm() {
+        logger.info("bdServiceForm");
+        return new ModelAndView("bdServiceForm");
+    }
+
+    @RequestMapping("/makeSale/bdServiceForm")
+    public ModelAndView bdServicForm() {
         logger.info("bdServiceForm");
         return new ModelAndView("bdServiceForm");
     }
